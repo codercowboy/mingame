@@ -6,9 +6,6 @@
 //  Copyright © 2017 Jason Baker. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 @interface GameEngine : NSObject
 
 - (instancetype)initWithImageView:(UIImageView *)imageView;

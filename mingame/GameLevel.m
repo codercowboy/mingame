@@ -8,20 +8,21 @@
 
 #import "GameLevel.h"
 
+@interface GameLevel()
+
+@property NSMutableArray * objects;
+
+@end
+
+
 @implementation GameLevel
 
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.height = 0;
+        self.width = 0;
         self.objects = [NSMutableArray array];
-        
-        self.player = [GameObject createWithType:PLAYER position:CGPointMake(12, 17) sprite:nil];
-        [self.player setUIImageBackgroundColor:[UIColor redColor]];
-        [self.objects addObject:self.player];
-        
-        self.end = [GameObject createWithType:END position:CGPointMake(12,12) sprite:nil];
-        [self.end setUIImageBackgroundColor:[UIColor greenColor]];
-        [self.objects addObject:self.end];
     }
     return self;
 }
@@ -30,6 +31,26 @@
     for (GameObject * obj in self.objects) {
         [obj resetToOriginalPosition];
     }
+}
+
+- (void) addObject:(GameObject *)obj {
+    if (obj.identifier.type == GAMEOBJECTTYPE_PLAYER) {
+        self.player = obj;
+    }
+    if (obj.identifier.type == GAMEOBJECTTYPE_END) {
+        self.end = obj;
+    }
+    if (obj.position.x >= self.width) {
+        self.width = obj.position.x + 1;
+    }
+    if (obj.position.y >= self.height) {
+        self.height = obj.position.y + 1;
+    }
+    [self.objects addObject:obj];
+}
+
+- (NSMutableArray *) getObjects {
+    return [NSMutableArray arrayWithArray:self.objects];
 }
 
 @end

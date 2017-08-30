@@ -27,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [GameConfig sharedInstance].backgroundColor;
+    self.imageView.backgroundColor = [GameConfig sharedInstance].backgroundColor;
+    
     self.gameEngine = [[GameEngine alloc] initWithImageView:self.imageView];
     
     //[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(draw) userInfo:nil repeats:YES];

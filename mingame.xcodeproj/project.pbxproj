@@ -17,6 +17,10 @@
 		96BBF0FA1F53B9AF000417F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96BBF0F81F53B9AF000417F3 /* LaunchScreen.storyboard */; };
 		96E5DCD11F55EE2E0044C58D /* GameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E5DCD01F55EE2E0044C58D /* GameEngine.m */; };
 		96FCE0FA1F560B16006C1B30 /* GameLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FCE0F91F560B16006C1B30 /* GameLevel.m */; };
+		96FCE0FE1F5645B2006C1B30 /* LevelSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FCE0FD1F5645B2006C1B30 /* LevelSerializer.m */; };
+		96FCE1011F5646FA006C1B30 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FCE1001F5646FA006C1B30 /* GameConfig.m */; };
+		96FCE1061F565886006C1B30 /* GameRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FCE1051F565886006C1B30 /* GameRenderer.m */; };
+		96FCE1081F566048006C1B30 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 96FCE1071F566048006C1B30 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +32,8 @@
 		96BBF0EB1F53B9AF000417F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BBF0ED1F53B9AF000417F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		96BBF0EE1F53B9AF000417F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		96BBF0F01F53B9AF000417F3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		96BBF0F11F53B9AF000417F3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		96BBF0F01F53B9AF000417F3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = mingame/ViewController.h; sourceTree = "<group>"; };
+		96BBF0F11F53B9AF000417F3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = mingame/ViewController.m; sourceTree = "<group>"; };
 		96BBF0F41F53B9AF000417F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96BBF0F61F53B9AF000417F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96BBF0F91F53B9AF000417F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,6 +43,14 @@
 		96FCE0F81F560B16006C1B30 /* GameLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLevel.h; sourceTree = "<group>"; };
 		96FCE0F91F560B16006C1B30 /* GameLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLevel.m; sourceTree = "<group>"; };
 		96FCE0FB1F561A44006C1B30 /* MinGame-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MinGame-PrefixHeader.pch"; sourceTree = "<group>"; };
+		96FCE0FC1F5645B2006C1B30 /* LevelSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSerializer.h; sourceTree = "<group>"; };
+		96FCE0FD1F5645B2006C1B30 /* LevelSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSerializer.m; sourceTree = "<group>"; };
+		96FCE0FF1F5646FA006C1B30 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameConfig.h; path = ../GameConfig.h; sourceTree = "<group>"; };
+		96FCE1001F5646FA006C1B30 /* GameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameConfig.m; path = ../GameConfig.m; sourceTree = "<group>"; };
+		96FCE1031F5656C2006C1B30 /* tasks.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = tasks.md; sourceTree = "<group>"; };
+		96FCE1041F565886006C1B30 /* GameRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRenderer.h; sourceTree = "<group>"; };
+		96FCE1051F565886006C1B30 /* GameRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRenderer.m; sourceTree = "<group>"; };
+		96FCE1071F566048006C1B30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +67,12 @@
 		96BBF0DE1F53B9AF000417F3 = {
 			isa = PBXGroup;
 			children = (
+				96FCE1071F566048006C1B30 /* README.md */,
+				96FCE1031F5656C2006C1B30 /* tasks.md */,
 				96FCE0FB1F561A44006C1B30 /* MinGame-PrefixHeader.pch */,
-				96BBF0E91F53B9AF000417F3 /* mingame */,
+				96BBF0E91F53B9AF000417F3 /* Game Engine */,
+				96FCE1021F56474D006C1B30 /* UI */,
+				96BBF0EA1F53B9AF000417F3 /* Supporting Files */,
 				96BBF0E81F53B9AF000417F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,36 +85,50 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		96BBF0E91F53B9AF000417F3 /* mingame */ = {
+		96BBF0E91F53B9AF000417F3 /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
-				96BBF0ED1F53B9AF000417F3 /* AppDelegate.h */,
-				96BBF0EE1F53B9AF000417F3 /* AppDelegate.m */,
-				96BBF0F01F53B9AF000417F3 /* ViewController.h */,
-				96BBF0F11F53B9AF000417F3 /* ViewController.m */,
-				96BBF0F31F53B9AF000417F3 /* Main.storyboard */,
-				96BBF0F61F53B9AF000417F3 /* Assets.xcassets */,
-				96BBF0F81F53B9AF000417F3 /* LaunchScreen.storyboard */,
-				96BBF0FB1F53B9AF000417F3 /* Info.plist */,
-				96BBF0EA1F53B9AF000417F3 /* Supporting Files */,
-				96976B6E1F54F97C00C8F722 /* GameObject.h */,
-				96976B6F1F54F97C00C8F722 /* GameObject.m */,
 				96976B711F54FA9B00C8F722 /* GameBoard.h */,
 				96976B721F54FA9B00C8F722 /* GameBoard.m */,
+				96FCE0FF1F5646FA006C1B30 /* GameConfig.h */,
+				96FCE1001F5646FA006C1B30 /* GameConfig.m */,
 				96E5DCCF1F55EE2E0044C58D /* GameEngine.h */,
 				96E5DCD01F55EE2E0044C58D /* GameEngine.m */,
 				96FCE0F81F560B16006C1B30 /* GameLevel.h */,
 				96FCE0F91F560B16006C1B30 /* GameLevel.m */,
+				96976B6E1F54F97C00C8F722 /* GameObject.h */,
+				96976B6F1F54F97C00C8F722 /* GameObject.m */,
+				96FCE0FC1F5645B2006C1B30 /* LevelSerializer.h */,
+				96FCE0FD1F5645B2006C1B30 /* LevelSerializer.m */,
+				96FCE1041F565886006C1B30 /* GameRenderer.h */,
+				96FCE1051F565886006C1B30 /* GameRenderer.m */,
 			);
+			name = "Game Engine";
 			path = mingame;
 			sourceTree = "<group>";
 		};
 		96BBF0EA1F53B9AF000417F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				96BBF0ED1F53B9AF000417F3 /* AppDelegate.h */,
+				96BBF0EE1F53B9AF000417F3 /* AppDelegate.m */,
+				96BBF0F61F53B9AF000417F3 /* Assets.xcassets */,
+				96BBF0FB1F53B9AF000417F3 /* Info.plist */,
 				96BBF0EB1F53B9AF000417F3 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = mingame;
+			sourceTree = "<group>";
+		};
+		96FCE1021F56474D006C1B30 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				96BBF0F81F53B9AF000417F3 /* LaunchScreen.storyboard */,
+				96BBF0F31F53B9AF000417F3 /* Main.storyboard */,
+				96BBF0F01F53B9AF000417F3 /* ViewController.h */,
+				96BBF0F11F53B9AF000417F3 /* ViewController.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,11 +205,15 @@
 			files = (
 				96976B701F54F97C00C8F722 /* GameObject.m in Sources */,
 				96BBF0F21F53B9AF000417F3 /* ViewController.m in Sources */,
+				96FCE1061F565886006C1B30 /* GameRenderer.m in Sources */,
 				96976B731F54FA9B00C8F722 /* GameBoard.m in Sources */,
 				96FCE0FA1F560B16006C1B30 /* GameLevel.m in Sources */,
 				96BBF0EF1F53B9AF000417F3 /* AppDelegate.m in Sources */,
 				96E5DCD11F55EE2E0044C58D /* GameEngine.m in Sources */,
+				96FCE0FE1F5645B2006C1B30 /* LevelSerializer.m in Sources */,
 				96BBF0EC1F53B9AF000417F3 /* main.m in Sources */,
+				96FCE1081F566048006C1B30 /* README.md in Sources */,
+				96FCE1011F5646FA006C1B30 /* GameConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +226,7 @@
 				96BBF0F41F53B9AF000417F3 /* Base */,
 			);
 			name = Main.storyboard;
+			path = mingame;
 			sourceTree = "<group>";
 		};
 		96BBF0F81F53B9AF000417F3 /* LaunchScreen.storyboard */ = {
@@ -200,6 +235,7 @@
 				96BBF0F91F53B9AF000417F3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = mingame;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -302,6 +338,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MWAQCBP533;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/MinGame-PrefixHeader.pch";
 				INFOPLIST_FILE = mingame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codercowboy.mingame;
@@ -314,6 +352,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MWAQCBP533;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/MinGame-PrefixHeader.pch";
 				INFOPLIST_FILE = mingame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codercowboy.mingame;

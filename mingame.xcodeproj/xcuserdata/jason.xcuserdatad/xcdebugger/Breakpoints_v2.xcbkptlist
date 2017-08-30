@@ -6,32 +6,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mingame/GameEngine.m"
-            timestampString = "525739764.007617"
+            filePath = "mingame/LevelSerializer.m"
+            timestampString = "525754248.241181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-movePlayerByOffsetx:yOffset:"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "+deserializeLevelFromString:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mingame/GameEngine.m"
-            timestampString = "525739765.041398"
+            filePath = "mingame/LevelSerializer.m"
+            timestampString = "525754248.241181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-movePlayerByOffsetx:yOffset:"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "+deserializeLevelFromString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mingame/LevelSerializer.m"
+            timestampString = "525754248.241181"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "+deserializeLevelFromString:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

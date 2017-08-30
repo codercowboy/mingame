@@ -20,6 +20,14 @@
     return self;
 }
 
++ (GameBoard*) createBoardForLevel:(GameLevel *)level {
+    GameBoard * b = [[GameBoard alloc] initWithColumnCount:level.width rowCount:level.height];
+    for (GameObject * obj in [level getObjects]) {
+        [b placeObjectInBoard:obj];
+    }
+    return b;
+}
+
 - (void) clearBoard {
     self.board = [NSMutableArray arrayWithCapacity:self.columnCount];
     for (int i = 0; i < self.columnCount; i++) {

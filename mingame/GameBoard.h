@@ -6,14 +6,15 @@
 //  Copyright © 2017 Jason Baker. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "GameObject.h"
+#import "GameLevel.h"
 
 @interface GameBoard : NSObject
 
 @property int columnCount;
 @property int rowCount;
 @property (strong) NSMutableArray * board;
+
++ (GameBoard*) createBoardForLevel:(GameLevel *)level;
 
 - (instancetype)initWithColumnCount:(int)columnCount rowCount:(int)rowCount;
 - (void) placeObjectInBoard:(GameObject *)obj;
