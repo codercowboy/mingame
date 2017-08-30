@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mingame/GameBoard.m"
-            timestampString = "525669753.849304"
+            filePath = "mingame/GameEngine.m"
+            timestampString = "525739764.007617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-removeObjectFromBoard:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mingame/GameConfig.m"
-            timestampString = "525671121.52857"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-isGameOver"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-movePlayerByOffsetx:yOffset:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mingame/GameBoard.m"
-            timestampString = "525670661.680048"
+            filePath = "mingame/GameEngine.m"
+            timestampString = "525739765.041398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-moveObjectByOffset:xOffset:yOffset:"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-movePlayerByOffsetx:yOffset:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

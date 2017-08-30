@@ -7,15 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GameConfig.h"
 
 @interface ViewController : UIViewController
 
 @property (strong) IBOutlet UIImageView * imageView;
-
-@property (strong) GameConfig * game;
-
-- (IBAction) imageTouched:(id)sender;
 
 @end
 
