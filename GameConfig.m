@@ -42,6 +42,7 @@
         self.endColor = self.greenColor;
         self.keyColor = UIColorFromHex(0xEDD400);
         self.doorColor = UIColorFromHex(0xC17D11);
+        self.doorColor = [UIColor brownColor];
         self.wallColor = [UIColor blackColor];
         self.monsterColor = [UIColor orangeColor];
         
@@ -70,15 +71,15 @@
         
         self.prototypeKeyRed = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
                                                         variant:GAMEOBJECTVARIANT_1
-                                                          color:self.keyColor];
+                                                          color:self.backgroundColor];
         
         self.prototypeKeyGreen = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
                                                             variant:GAMEOBJECTVARIANT_2
-                                                              color:self.keyColor];
+                                                              color:self.backgroundColor];
         
         self.prototypeKeyBlue = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
                                                             variant:GAMEOBJECTVARIANT_3
-                                                              color:self.keyColor];
+                                                              color:self.backgroundColor];
         
         //doors
         self.prototypeDoor = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR
@@ -112,7 +113,7 @@
     } else if (variant == GAMEOBJECTVARIANT_3) {
         borderColor = self.blueColor;
     }
-    int borderWidth = (borderColor == nil) ? 0 : 4;
+    int borderWidth = (borderColor == nil) ? 0 : 2;
     if (borderColor != nil) {
         UIColor * tmpColor = color;
         color = borderColor;

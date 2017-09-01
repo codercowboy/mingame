@@ -21,17 +21,24 @@
         borderColor = color;
     }
     
+    width = width * 8;
+    height = height * 8;
+    borderWidth = borderWidth * 8;
+    
     UIGraphicsBeginImageContext(CGSizeMake(width, height));
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [borderColor CGColor]);
     CGContextFillRect(context, CGRectMake(0, 0, width, height));
-    CGContextStrokePath(context);
     
     if (borderWidth > 0) {
         CGContextSetFillColorWithColor(context, [color CGColor]);
-        CGContextFillRect(context, CGRectMake(borderWidth, borderWidth,
-                                              width - (borderWidth *2), height - (borderWidth * 2)));
+        CGRect innerRect = CGRectMake(borderWidth, borderWidth, width - (borderWidth *2), height - (borderWidth * 2));
+        CGContextFillEllipseInRect(context, innerRect);
+        CGContextSetStrokeColorWithColor(context, [[UIColor yellowColor] CGColor]);
+        CGContextSetLineWidth(context, 4);
+        CGContextStrokeEllipseInRect(context, innerRect);
         CGContextStrokePath(context);
+        
     }
     
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
