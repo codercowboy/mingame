@@ -12,7 +12,6 @@
 
 @interface LevelEditor();
 
-@property (strong) GameObject * currentObject;
 @property (strong) GameBoard * board;
 @property (strong) NSMutableArray * temporaryObjects;
 
@@ -34,22 +33,22 @@
 }
 
 - (void) placeObjectAtX:(int)x y:(int)y temporary:(bool)temporary {
+    if (self.currentObject == nil) {
+        [self removeObjectAtX:x y:y];
+        return;
+    }
     GameObject * obj = [self.currentObject clone];
     obj.position = CGPointMake(x,y);
     if (temporary) {
         [self.temporaryObjects addObject:obj];
     }
     [self.level addObject:obj];
-    [self.board placeObjectInBoard:obj];
+    [self.board placeObject:obj x:x y:y];
 }
 
 - (void) removeObjectAtX:(int)x y:(int)y {
-    GameObject * obj = [self.board getObjectAtX:x y:y];
-    if (obj == nil) {
-        return;
-    }
-    [self.board removeObjectFromBoard:obj];
-    [self.level removeObject:obj];
+    [self.board removeObjectAtX:x y:y];
+    [self.level removeObjectAtX:x y:y];
 }
 
 - (void) saveTemporaryObjects {
@@ -58,7 +57,7 @@
 
 - (void) removeTemporaryObjects {
     for (GameObject * obj in self.temporaryObjects) {
-        [self.board removeObjectFromBoard:obj];
+        [self.board removeObject:obj];
         [self.level removeObject:obj];
     }
     self.temporaryObjects = [NSMutableArray array];

@@ -3,6 +3,7 @@
 # Bugs
 
  * Need a way to restart level when user gets stuck
+ * How does it look on a iphone plus?
 
 # Levels
 
@@ -14,7 +15,7 @@
 
 # Features
 
- * Level Editor tools: undo, eraser, object placing, play level, load level, save level 
+ * Level Editor tools: play level, load level, save level 
  * level selection screen
  * Add tick to game
  * Give objects multiple sprites to animate based on ticks

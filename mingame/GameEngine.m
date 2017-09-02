@@ -272,19 +272,19 @@
 }
 
 - (void) moveObject:(GameObject *)obj x:(int)x y:(int)y {
-    [self.board removeObjectFromBoard:obj];
+    [self.board removeObject:obj];
     obj.position = CGPointMake(x, y);
-    [self.board placeObjectInBoard:obj];
+    [self.board placeObject:obj];
 }
 
 - (void) addObject:(GameObject *)obj {
     [self.objects addObject:obj];
-    [self.board placeObjectInBoard:obj];
+    [self.board placeObject:obj];
 }
 
 - (void) removeObject:(GameObject *)obj {
     [self.objects removeObject:obj];
-    [self.board removeObjectFromBoard:obj];
+    [self.board removeObject:obj];
 }
 
 @end

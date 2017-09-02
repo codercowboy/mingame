@@ -23,7 +23,7 @@
 + (GameBoard*) createBoardForLevel:(GameLevel *)level {
     GameBoard * b = [[GameBoard alloc] initWithColumnCount:level.width rowCount:level.height];
     for (GameObject * obj in [level getObjects]) {
-        [b placeObjectInBoard:obj];
+        [b placeObject:obj];
     }
     return b;
 }
@@ -39,14 +39,27 @@
     }
 }
 
-- (void) placeObjectInBoard:(GameObject *)obj {
+- (void) placeObject:(GameObject *)obj {
     NSMutableArray * col = [self getColForIndex:obj.position.x];
     [col replaceObjectAtIndex:obj.position.y withObject:obj];
 }
 
-- (void) removeObjectFromBoard:(GameObject *)obj {
-    NSMutableArray * col = [self getColForIndex:obj.position.x];
-    [col replaceObjectAtIndex:obj.position.y withObject:[NSNull null]];
+- (void) placeObject:(GameObject *)obj x:(int)x y:(int)y {
+    NSMutableArray * col = [self getColForIndex:x];
+    NSObject * nilSafeObj = (obj == nil) ? [NSNull null] : obj;
+    [col replaceObjectAtIndex:obj.position.y withObject:nilSafeObj];
+}
+
+- (void) removeObjectAtX:(int)x y:(int)y {
+    NSMutableArray * col = [self getColForIndex:x];
+    [col replaceObjectAtIndex:y withObject:[NSNull null]];
+}
+
+- (void) removeObject:(GameObject *)obj {
+    if (obj == nil) {
+        return;
+    }
+    [self removeObjectAtX:obj.position.x y:obj.position.y];
 }
 
 - (GameObject *) getObjectAtX:(int)x y:(int)y {

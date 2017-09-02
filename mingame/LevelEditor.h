@@ -12,6 +12,7 @@
 @interface LevelEditor : NSObject
 
 @property (strong) GameLevel * level;
+@property (strong) GameObject * currentObject;
 
 - (void) placeObjectAtX:(int)x y:(int)y temporary:(bool)temporary;
 - (void) removeObjectAtX:(int)x y:(int)y;

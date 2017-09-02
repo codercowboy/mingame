@@ -46,11 +46,25 @@
     if (obj.position.y >= self.height) {
         self.height = obj.position.y + 1;
     }
+    [self removeObjectAtX:obj.position.x y:obj.position.y];
     [self.objects addObject:obj];
 }
 
 - (NSMutableArray *) getObjects {
     return [NSMutableArray arrayWithArray:self.objects];
+}
+
+- (void) removeObjectAtX:(int)x y:(int)y {
+    GameObject * objectToRemove = nil;
+    for (GameObject * o in self.objects) {
+        if (o.position.x == x && o.position.y == y) {
+            objectToRemove = o;
+            break;
+        }
+    }
+    if (objectToRemove != nil) {
+        [self removeObject:objectToRemove];
+    }
 }
 
 - (void) removeObject:(GameObject *)obj {

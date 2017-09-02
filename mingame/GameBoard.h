@@ -17,8 +17,10 @@
 + (GameBoard*) createBoardForLevel:(GameLevel *)level;
 
 - (instancetype)initWithColumnCount:(int)columnCount rowCount:(int)rowCount;
-- (void) placeObjectInBoard:(GameObject *)obj;
-- (void) removeObjectFromBoard:(GameObject *)obj;
+- (void) placeObject:(GameObject *)obj;
+- (void) placeObject:(GameObject *)obj x:(int)x y:(int)y;
+- (void) removeObject:(GameObject *)obj;
+- (void) removeObjectAtX:(int)x y:(int)y;
 - (GameObject *) getObjectAtX:(int)x y:(int)y;
 - (NSMutableArray *) getColForIndex:(int)index;
 - (void) clearBoard;

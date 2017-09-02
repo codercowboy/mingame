@@ -129,6 +129,14 @@
     
 }
 
+- (GameObject *) createObjectWithType:(GameObjectType)type {
+    return [self createObjectWithType:type variant:GAMEOBJECTVARIANT_UNDEFINED positionX:0 positionY:0];
+}
+
+- (GameObject *) createObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant {
+    return [self createObjectWithType:type variant:variant positionX:0 positionY:0];
+}
+
 - (GameObject *) createObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant positionX:(int)x positionY:(int)y {
     NSString * key = [NSString stringWithFormat:@"%d:%d", type, variant];
     GameObject * o = [self.objectsByType objectForKey:key];

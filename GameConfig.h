@@ -35,6 +35,8 @@
 @property (strong) GameObject * prototypeMonster;
 
 + (GameConfig *) sharedInstance;
+- (GameObject *) createObjectWithType:(GameObjectType)type;
+- (GameObject *) createObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant;
 - (GameObject *) createObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant positionX:(int)x positionY:(int)y;
 
 @end

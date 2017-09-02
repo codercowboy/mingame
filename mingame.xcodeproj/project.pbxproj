@@ -11,6 +11,16 @@
 		96976B731F54FA9B00C8F722 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 96976B721F54FA9B00C8F722 /* GameBoard.m */; };
 		96ABB3281F5A0EDA0088F376 /* LevelEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3271F5A0EDA0088F376 /* LevelEditor.m */; };
 		96ABB32B1F5A12DA0088F376 /* LevelEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB32A1F5A12DA0088F376 /* LevelEditorViewController.m */; };
+		96ABB32E1F5A4AD70088F376 /* ItemSelectionPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB32D1F5A4AD70088F376 /* ItemSelectionPopup.m */; };
+		96ABB3341F5A52140088F376 /* UIButton+UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3331F5A52140088F376 /* UIButton+UserData.m */; };
+		96ABB33B1F5A66940088F376 /* erase.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ABB3371F5A66940088F376 /* erase.png */; };
+		96ABB33C1F5A66940088F376 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ABB3381F5A66940088F376 /* play.png */; };
+		96ABB33D1F5A66940088F376 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ABB3391F5A66940088F376 /* save.png */; };
+		96ABB33E1F5A66940088F376 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 96ABB33A1F5A66940088F376 /* trash.png */; };
+		96ABB3411F5A66D00088F376 /* ModeSelectionPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3401F5A66D00088F376 /* ModeSelectionPopup.m */; };
+		96ABB3441F5A66E30088F376 /* GameObjectSelectionPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3431F5A66E30088F376 /* GameObjectSelectionPopup.m */; };
+		96ABB3471F5A6FE80088F376 /* TOFrameUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3461F5A6FE80088F376 /* TOFrameUtils.m */; };
+		96ABB34A1F5A71900088F376 /* UIView+TOFrameUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3491F5A71900088F376 /* UIView+TOFrameUtils.m */; };
 		96BBF0EC1F53B9AF000417F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BBF0EB1F53B9AF000417F3 /* main.m */; };
 		96BBF0EF1F53B9AF000417F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BBF0EE1F53B9AF000417F3 /* AppDelegate.m */; };
 		96BBF0F21F53B9AF000417F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BBF0F11F53B9AF000417F3 /* ViewController.m */; };
@@ -34,6 +44,22 @@
 		96ABB3271F5A0EDA0088F376 /* LevelEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelEditor.m; sourceTree = "<group>"; };
 		96ABB3291F5A12DA0088F376 /* LevelEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelEditorViewController.h; sourceTree = "<group>"; };
 		96ABB32A1F5A12DA0088F376 /* LevelEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelEditorViewController.m; sourceTree = "<group>"; };
+		96ABB32C1F5A4AD70088F376 /* ItemSelectionPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectionPopup.h; sourceTree = "<group>"; };
+		96ABB32D1F5A4AD70088F376 /* ItemSelectionPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSelectionPopup.m; sourceTree = "<group>"; };
+		96ABB3321F5A52140088F376 /* UIButton+UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+UserData.h"; sourceTree = "<group>"; };
+		96ABB3331F5A52140088F376 /* UIButton+UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UserData.m"; sourceTree = "<group>"; };
+		96ABB3371F5A66940088F376 /* erase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erase.png; path = mingame/img/erase.png; sourceTree = "<group>"; };
+		96ABB3381F5A66940088F376 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = mingame/img/play.png; sourceTree = "<group>"; };
+		96ABB3391F5A66940088F376 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = save.png; path = mingame/img/save.png; sourceTree = "<group>"; };
+		96ABB33A1F5A66940088F376 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = mingame/img/trash.png; sourceTree = "<group>"; };
+		96ABB33F1F5A66D00088F376 /* ModeSelectionPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeSelectionPopup.h; sourceTree = "<group>"; };
+		96ABB3401F5A66D00088F376 /* ModeSelectionPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModeSelectionPopup.m; sourceTree = "<group>"; };
+		96ABB3421F5A66E30088F376 /* GameObjectSelectionPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectSelectionPopup.h; sourceTree = "<group>"; };
+		96ABB3431F5A66E30088F376 /* GameObjectSelectionPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObjectSelectionPopup.m; sourceTree = "<group>"; };
+		96ABB3451F5A6FE80088F376 /* TOFrameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOFrameUtils.h; path = mingame/TOFrameUtils.h; sourceTree = "<group>"; };
+		96ABB3461F5A6FE80088F376 /* TOFrameUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TOFrameUtils.m; path = mingame/TOFrameUtils.m; sourceTree = "<group>"; };
+		96ABB3481F5A71000088F376 /* UIView+TOFrameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+TOFrameUtils.h"; path = "mingame/UIView+TOFrameUtils.h"; sourceTree = "<group>"; };
+		96ABB3491F5A71900088F376 /* UIView+TOFrameUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+TOFrameUtils.m"; path = "mingame/UIView+TOFrameUtils.m"; sourceTree = "<group>"; };
 		96BBF0E71F53B9AF000417F3 /* mingame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mingame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BBF0EB1F53B9AF000417F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BBF0ED1F53B9AF000417F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,12 +157,28 @@
 		96FCE1021F56474D006C1B30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				96ABB3491F5A71900088F376 /* UIView+TOFrameUtils.m */,
+				96ABB3481F5A71000088F376 /* UIView+TOFrameUtils.h */,
+				96ABB3451F5A6FE80088F376 /* TOFrameUtils.h */,
+				96ABB3461F5A6FE80088F376 /* TOFrameUtils.m */,
+				96ABB3371F5A66940088F376 /* erase.png */,
+				96ABB3381F5A66940088F376 /* play.png */,
+				96ABB3391F5A66940088F376 /* save.png */,
+				96ABB33A1F5A66940088F376 /* trash.png */,
+				96ABB3321F5A52140088F376 /* UIButton+UserData.h */,
+				96ABB3331F5A52140088F376 /* UIButton+UserData.m */,
 				96BBF0F81F53B9AF000417F3 /* LaunchScreen.storyboard */,
 				96BBF0F31F53B9AF000417F3 /* Main.storyboard */,
 				96BBF0F01F53B9AF000417F3 /* ViewController.h */,
 				96BBF0F11F53B9AF000417F3 /* ViewController.m */,
 				96ABB3291F5A12DA0088F376 /* LevelEditorViewController.h */,
 				96ABB32A1F5A12DA0088F376 /* LevelEditorViewController.m */,
+				96ABB32C1F5A4AD70088F376 /* ItemSelectionPopup.h */,
+				96ABB32D1F5A4AD70088F376 /* ItemSelectionPopup.m */,
+				96ABB33F1F5A66D00088F376 /* ModeSelectionPopup.h */,
+				96ABB3401F5A66D00088F376 /* ModeSelectionPopup.m */,
+				96ABB3421F5A66E30088F376 /* GameObjectSelectionPopup.h */,
+				96ABB3431F5A66E30088F376 /* GameObjectSelectionPopup.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -200,7 +242,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96ABB33B1F5A66940088F376 /* erase.png in Resources */,
+				96ABB33C1F5A66940088F376 /* play.png in Resources */,
+				96ABB33D1F5A66940088F376 /* save.png in Resources */,
 				96BBF0FA1F53B9AF000417F3 /* LaunchScreen.storyboard in Resources */,
+				96ABB33E1F5A66940088F376 /* trash.png in Resources */,
 				96BBF0F71F53B9AF000417F3 /* Assets.xcassets in Resources */,
 				96BBF0F51F53B9AF000417F3 /* Main.storyboard in Resources */,
 			);
@@ -215,16 +261,22 @@
 			files = (
 				96976B701F54F97C00C8F722 /* GameObject.m in Sources */,
 				96BBF0F21F53B9AF000417F3 /* ViewController.m in Sources */,
+				96ABB3441F5A66E30088F376 /* GameObjectSelectionPopup.m in Sources */,
 				96FCE1061F565886006C1B30 /* GameRenderer.m in Sources */,
 				96ABB3281F5A0EDA0088F376 /* LevelEditor.m in Sources */,
 				96976B731F54FA9B00C8F722 /* GameBoard.m in Sources */,
 				96FCE0FA1F560B16006C1B30 /* GameLevel.m in Sources */,
 				96BBF0EF1F53B9AF000417F3 /* AppDelegate.m in Sources */,
+				96ABB3341F5A52140088F376 /* UIButton+UserData.m in Sources */,
 				96E5DCD11F55EE2E0044C58D /* GameEngine.m in Sources */,
+				96ABB3471F5A6FE80088F376 /* TOFrameUtils.m in Sources */,
 				96FCE0FE1F5645B2006C1B30 /* LevelSerializer.m in Sources */,
 				96ABB32B1F5A12DA0088F376 /* LevelEditorViewController.m in Sources */,
+				96ABB32E1F5A4AD70088F376 /* ItemSelectionPopup.m in Sources */,
 				96BBF0EC1F53B9AF000417F3 /* main.m in Sources */,
+				96ABB34A1F5A71900088F376 /* UIView+TOFrameUtils.m in Sources */,
 				96FCE1081F566048006C1B30 /* README.md in Sources */,
+				96ABB3411F5A66D00088F376 /* ModeSelectionPopup.m in Sources */,
 				96FCE1011F5646FA006C1B30 /* GameConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
