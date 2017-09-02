@@ -6,9 +6,12 @@
 //  Copyright © 2017 Jason Baker. All rights reserved.
 //
 
+#import "GameLevel.h"
+
 @interface GameEngine : NSObject
 
 - (instancetype)initWithImageView:(UIImageView *)imageView;
 - (void) movePlayerByOffsetx:(int)x yOffset:(int)y;
+- (void) playTestLevel:(GameLevel*)level;
 
 @end

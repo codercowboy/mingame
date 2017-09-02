@@ -9,6 +9,7 @@
 #import "LevelEditorViewController.h"
 #import "LevelEditor.h"
 #import "GameRenderer.h"
+#import "ViewController.h"
 
 @interface LevelEditorViewController ()
 
@@ -75,6 +76,11 @@
             self.levelEditor.currentObject = nil;
             self.modePopup.currentObject = nil;
             [self.modePopup updateButtonFromCurrentObject];
+        } else if ([@"play" isEqualToString:(NSString *)data]) {
+            ViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gamevc"];
+            vc.level = self.levelEditor.level;
+            [self.navigationController pushViewController:vc animated:YES];
+            
         }
     } else {
         [self.objectPopup setHidden:true];

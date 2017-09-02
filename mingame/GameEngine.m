@@ -8,7 +8,6 @@
 
 #import "GameEngine.h"
 #import "GameBoard.h"
-#import "GameLevel.h"
 #import "GameRenderer.h"
 #import "LevelSerializer.h"
 
@@ -27,6 +26,8 @@
 
 @property (strong) UIImageView * imageView;
 
+@property bool playTestMode;
+
 @end
 
 @implementation GameEngine
@@ -34,6 +35,7 @@
 - (instancetype)initWithImageView:(UIImageView *)imageView {
     self = [super init];
     if (self) {
+        self.playTestMode = false;
         self.gfxScale = 20;
         self.playerKeys = [NSMutableArray array];
         self.imageView = imageView;
@@ -44,6 +46,13 @@
         [self resetLevel];
     }
     return self;
+}
+
+- (void) playTestLevel:(GameLevel*)level {
+    self.playTestMode = true;
+    self.levels = [NSMutableArray arrayWithObject:level];
+    self.levelIndex = 0;
+    [self resetLevel];
 }
 
 - (void) createLevels {
@@ -153,6 +162,7 @@
         return;
     }
     if ([self isLevelCompletedAtPosition:newPosition]) {
+        NSLog(@"Level complete!");
         [self moveToNextLevel];
         return;
     }

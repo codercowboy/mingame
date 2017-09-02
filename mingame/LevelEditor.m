@@ -39,6 +39,7 @@
     }
     GameObject * obj = [self.currentObject clone];
     obj.position = CGPointMake(x,y);
+    obj.originalPosition = obj.position;
     if (temporary) {
         [self.temporaryObjects addObject:obj];
     }

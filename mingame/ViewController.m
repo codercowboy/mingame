@@ -8,12 +8,9 @@
 
 #import "ViewController.h"
 #import <UIKit/UIKit.h>
-#import "GameEngine.h"
 
 @interface ViewController ()
-
 @property (strong) GameEngine * gameEngine;
-
 @end
 
 @implementation ViewController
@@ -29,8 +26,11 @@
     
     self.view.backgroundColor = [GameConfig sharedInstance].backgroundColor;
     self.imageView.backgroundColor = [GameConfig sharedInstance].backgroundColor;
-    
     self.gameEngine = [[GameEngine alloc] initWithImageView:self.imageView];
+    if (self.level != nil) {
+        [self.gameEngine playTestLevel:self.level];
+    }
+    
     
     //[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(draw) userInfo:nil repeats:YES];
     UISwipeGestureRecognizer * rec = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftSwipe)];
@@ -55,5 +55,9 @@
 -(void)handleRightSwipe { [self.gameEngine movePlayerByOffsetx:1 yOffset:0]; }
 -(void)handleUpSwipe { [self.gameEngine movePlayerByOffsetx:0 yOffset:-1]; }
 -(void)handleDownSwipe { [self.gameEngine movePlayerByOffsetx:0 yOffset:1]; }
+
+- (IBAction)goBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:true];
+}
 
 @end

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameEngine.h"
+#import "GameLevel.h"
 
 @interface ViewController : UIViewController
 
 @property (strong) IBOutlet UIImageView * imageView;
+@property (strong) GameLevel * level;
 
 @end
 
