@@ -19,7 +19,7 @@
 - (instancetype)initWithColumnCount:(int)columnCount rowCount:(int)rowCount;
 - (void) placeObjectInBoard:(GameObject *)obj;
 - (void) removeObjectFromBoard:(GameObject *)obj;
-- (NSObject *) getObjectAtX:(int)x y:(int)y;
+- (GameObject *) getObjectAtX:(int)x y:(int)y;
 - (NSMutableArray *) getColForIndex:(int)index;
 - (void) clearBoard;
 

@@ -14,15 +14,13 @@
 
 # Features
 
- * Make level editor
+ * Level Editor tools: undo, eraser, object placing, play level, load level, save level 
+ * level selection screen
  * Add tick to game
  * Give objects multiple sprites to animate based on ticks
  * Give objects a path of positions to move based on ticks
- * Improve rendering engine to be three-phase as described in the TODOs in the draw function
  * Add ability for blocks to be chained to other blocks and dissapear when one a position is touched
- * Allow multiple players in level
  * After user completes tutorial, fade to menu screen w/ options: play, select level, edit level, credits
- * Make level editor IAP
  * Add ability to share levels via copy/paste
  * Add ability to share levels via email
  * Create level submission email mingame@codercowboy.com, add ability to submit levels
@@ -33,3 +31,11 @@
  * When user dies, fade screen to red, then back out to reset level
  * add indicator on screen showing keys/powerups user has
  * move rendering out to GameRenderer
+
+# future ideas
+ * Improve rendering engine to be three-phase as described in the TODOs in GameEngine
+ * level editor ability to zoom in and work at a more detailed level
+ * level editor undo/redo
+ * allow multiple players in level
+ * Make level editor IAP
+ * document code :P

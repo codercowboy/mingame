@@ -15,6 +15,7 @@
 
 - (void) resetObjectPositions;
 - (void) addObject:(GameObject *)obj;
+- (void) removeObject:(GameObject *)obj;
 - (NSMutableArray *) getObjects;
 
 @end

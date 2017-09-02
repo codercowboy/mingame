@@ -53,4 +53,8 @@
     return [NSMutableArray arrayWithArray:self.objects];
 }
 
+- (void) removeObject:(GameObject *)obj {
+    [self.objects removeObject:obj];
+}
+
 @end

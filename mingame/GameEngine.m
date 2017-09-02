@@ -9,6 +9,7 @@
 #import "GameEngine.h"
 #import "GameBoard.h"
 #import "GameLevel.h"
+#import "GameRenderer.h"
 #import "LevelSerializer.h"
 
 @interface GameEngine()
@@ -164,16 +165,15 @@
 }
 
 - (bool) canPlayerMoveToLocationX:(int)x y:(int)y {
-    NSObject * existingObj = [self.board getObjectAtX:x y:y];
-    if (existingObj == [NSNull null]) {
+    GameObject * existingObj = [self.board getObjectAtX:x y:y];
+    if (existingObj == nil) {
         return true;
     }
-    GameObject * existingGameObj = (GameObject *) existingObj;
-    if (existingGameObj.identifier.type == GAMEOBJECTTYPE_WALL) {
+    if (existingObj.identifier.type == GAMEOBJECTTYPE_WALL) {
         return false;
     }
-    if (existingGameObj.identifier.type == GAMEOBJECTTYPE_DOOR) {
-        return [self getKeyForDoor:existingGameObj] != nil;
+    if (existingObj.identifier.type == GAMEOBJECTTYPE_DOOR) {
+        return [self getKeyForDoor:existingObj] != nil;
     }
     return true;
 }
@@ -216,7 +216,6 @@
         for (GameObject * obj in self.objects) {
             [[obj getCurrentSprite] drawInRect:CGRectMake(obj.position.x * scale, obj.position.y * scale, scale, scale)];
         }
-
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
@@ -250,11 +249,11 @@
 }
 
 - (void) removeObjectAtPosition:(CGPoint)position {
-    NSObject * obj = [self.board getObjectAtX:position.x y:position.y];
-    if (obj == [NSNull null]) {
+    GameObject * obj = [self.board getObjectAtX:position.x y:position.y];
+    if (obj == nil) {
         return;
     }
-    [self removeObject:((GameObject *)obj)];
+    [self removeObject:obj];
 }
 
 - (bool) checkForObjectAtPosition:(CGPoint)position type:(GameObjectType)type {

@@ -49,9 +49,10 @@
     [col replaceObjectAtIndex:obj.position.y withObject:[NSNull null]];
 }
 
-- (NSObject *) getObjectAtX:(int)x y:(int)y {
+- (GameObject *) getObjectAtX:(int)x y:(int)y {
     NSMutableArray * col = [self getColForIndex:x];
-    return [col objectAtIndex:y];
+    NSObject * obj = [col objectAtIndex:y];
+    return (obj == [NSNull null]) ? nil : (GameObject *) obj;
 }
 
 - (NSMutableArray *) getColForIndex:(int)index { return [self.board objectAtIndex:index]; }

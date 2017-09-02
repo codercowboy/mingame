@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		96976B701F54F97C00C8F722 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 96976B6F1F54F97C00C8F722 /* GameObject.m */; };
 		96976B731F54FA9B00C8F722 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 96976B721F54FA9B00C8F722 /* GameBoard.m */; };
+		96ABB3281F5A0EDA0088F376 /* LevelEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3271F5A0EDA0088F376 /* LevelEditor.m */; };
+		96ABB32B1F5A12DA0088F376 /* LevelEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB32A1F5A12DA0088F376 /* LevelEditorViewController.m */; };
 		96BBF0EC1F53B9AF000417F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BBF0EB1F53B9AF000417F3 /* main.m */; };
 		96BBF0EF1F53B9AF000417F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BBF0EE1F53B9AF000417F3 /* AppDelegate.m */; };
 		96BBF0F21F53B9AF000417F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BBF0F11F53B9AF000417F3 /* ViewController.m */; };
@@ -28,6 +30,10 @@
 		96976B6F1F54F97C00C8F722 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObject.m; sourceTree = "<group>"; };
 		96976B711F54FA9B00C8F722 /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
 		96976B721F54FA9B00C8F722 /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
+		96ABB3261F5A0EDA0088F376 /* LevelEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelEditor.h; sourceTree = "<group>"; };
+		96ABB3271F5A0EDA0088F376 /* LevelEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelEditor.m; sourceTree = "<group>"; };
+		96ABB3291F5A12DA0088F376 /* LevelEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelEditorViewController.h; sourceTree = "<group>"; };
+		96ABB32A1F5A12DA0088F376 /* LevelEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelEditorViewController.m; sourceTree = "<group>"; };
 		96BBF0E71F53B9AF000417F3 /* mingame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mingame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BBF0EB1F53B9AF000417F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96BBF0ED1F53B9AF000417F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 				96FCE0FD1F5645B2006C1B30 /* LevelSerializer.m */,
 				96FCE1041F565886006C1B30 /* GameRenderer.h */,
 				96FCE1051F565886006C1B30 /* GameRenderer.m */,
+				96ABB3261F5A0EDA0088F376 /* LevelEditor.h */,
+				96ABB3271F5A0EDA0088F376 /* LevelEditor.m */,
 			);
 			name = "Game Engine";
 			path = mingame;
@@ -127,6 +135,8 @@
 				96BBF0F31F53B9AF000417F3 /* Main.storyboard */,
 				96BBF0F01F53B9AF000417F3 /* ViewController.h */,
 				96BBF0F11F53B9AF000417F3 /* ViewController.m */,
+				96ABB3291F5A12DA0088F376 /* LevelEditorViewController.h */,
+				96ABB32A1F5A12DA0088F376 /* LevelEditorViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -206,11 +216,13 @@
 				96976B701F54F97C00C8F722 /* GameObject.m in Sources */,
 				96BBF0F21F53B9AF000417F3 /* ViewController.m in Sources */,
 				96FCE1061F565886006C1B30 /* GameRenderer.m in Sources */,
+				96ABB3281F5A0EDA0088F376 /* LevelEditor.m in Sources */,
 				96976B731F54FA9B00C8F722 /* GameBoard.m in Sources */,
 				96FCE0FA1F560B16006C1B30 /* GameLevel.m in Sources */,
 				96BBF0EF1F53B9AF000417F3 /* AppDelegate.m in Sources */,
 				96E5DCD11F55EE2E0044C58D /* GameEngine.m in Sources */,
 				96FCE0FE1F5645B2006C1B30 /* LevelSerializer.m in Sources */,
+				96ABB32B1F5A12DA0088F376 /* LevelEditorViewController.m in Sources */,
 				96BBF0EC1F53B9AF000417F3 /* main.m in Sources */,
 				96FCE1081F566048006C1B30 /* README.md in Sources */,
 				96FCE1011F5646FA006C1B30 /* GameConfig.m in Sources */,

@@ -38,12 +38,103 @@
         CGContextSetLineWidth(context, 4);
         CGContextStrokeEllipseInRect(context, innerRect);
         CGContextStrokePath(context);
+        /*
+        CGContextMoveToPoint(context, width / 2, borderWidth);
+        CGContextAddLineToPoint(context, width - borderWidth, height - borderWidth);
+        CGContextAddLineToPoint(context, borderWidth, height - borderWidth);
+        CGContextAddLineToPoint(context, width / 2, borderWidth);
+        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextFillPath(context);
+        */
         
     }
     
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
++ (UIImage *) renderGrid:(UIColor *)color
+             borderColor:(UIColor*)borderColor borderWidth:(int)borderWidth
+                  tileHeight:(int)tileHeight tileWidth:(int)tileWidth
+             columnCount:(int)columnCount rowCount:(int)rowCount {
+    
+    int multiplier = 1;
+    tileWidth = tileWidth * multiplier;
+    tileHeight = tileHeight * multiplier;
+
+    UIGraphicsBeginImageContext(CGSizeMake(tileWidth, tileHeight));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, CGRectMake(0, 0, tileWidth, tileHeight));
+    UIImage * tileImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    int width = (tileWidth * columnCount);
+    int height = (tileHeight * rowCount);
+    
+    if (borderWidth > 0) {
+        borderWidth = borderWidth * multiplier;
+        width += borderWidth * (columnCount + 1);
+        height += borderWidth * (rowCount + 1);
+    }
+        
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    context = UIGraphicsGetCurrentContext();
+    if (borderWidth > 0) {
+        CGContextSetFillColorWithColor(context, [borderColor CGColor]);
+        CGContextFillRect(context, CGRectMake(0, 0, width, height));
+    }
+    for (int col = 0; col < columnCount; col++) {
+        for (int row = 0; row < rowCount; row++) {
+            int x = col * tileWidth;
+            int y = row * tileHeight;
+            if (borderWidth > 0) {
+                x += borderWidth * (col + 1);
+                y += borderWidth * (row + 1);
+            }
+            CGRect rect = CGRectMake(x, y, tileWidth, tileHeight);
+            [tileImage drawInRect:rect];
+        }
+    }
+    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
++ (UIImage *) renderGameObjects:(NSArray*)objects backgroundImage:(UIImage *)backgroundImage
+                     tileLength:(int)tileLength borderWidth:(int)borderWidth
+                    columnCount:(int)columnCount rowCount:(int)rowCount {
+    
+    int width = (tileLength * columnCount);
+    int height = (tileLength * rowCount);
+
+    if (borderWidth > 0) {
+        borderWidth = borderWidth;
+        width += borderWidth * (columnCount + 1);
+        height += borderWidth * (rowCount + 1);
+    }
+
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    if (backgroundImage != nil) {
+        [backgroundImage drawInRect:CGRectMake(0, 0, width, height)];
+    }
+    if (objects != nil) {
+        for (GameObject * obj in objects) {
+            int col = obj.position.x;
+            int row = obj.position.y;
+            int x = col * tileLength;
+            int y = row * tileLength;
+            if (borderWidth > 0) {
+                x += borderWidth * (col + 1);
+                y += borderWidth * (row + 1);
+            }
+            [[obj getCurrentSprite] drawInRect:CGRectMake(x,y, tileLength, tileLength)];
+        }
+    }
+    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end
