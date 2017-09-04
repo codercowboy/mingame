@@ -4,6 +4,7 @@
 
  * Need a way to restart level when user gets stuck
  * How does it look on a iphone plus?
+ * crashes when user attempts to go off screen when level has player outside of screen
 
 # Levels
 
@@ -15,8 +16,11 @@
 
 # Features
 
- * Level Editor tools: play level, load level, save level 
  * level selection screen
+ * Level Editor tools: load level, save level 
+ * level serializer should auto trim empty rows and columns leading and trailing the level (leave one blank row/column on every side though)
+ * allow user to copy and edit main game levels
+ * add monster pathing
  * Add tick to game
  * Give objects multiple sprites to animate based on ticks
  * Give objects a path of positions to move based on ticks
@@ -25,6 +29,8 @@
  * Add ability to share levels via copy/paste
  * Add ability to share levels via email
  * Create level submission email mingame@codercowboy.com, add ability to submit levels
+ * mention usage of font awesome in about section
+ * reorganize project layout on disk
 
 # Cleanup / Polish
 
