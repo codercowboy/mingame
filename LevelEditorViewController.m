@@ -80,7 +80,6 @@
             ViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gamevc"];
             vc.level = self.levelEditor.level;
             [self.navigationController pushViewController:vc animated:YES];
-            
         }
     } else {
         [self.objectPopup setHidden:true];

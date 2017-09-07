@@ -40,9 +40,8 @@
         self.playerKeys = [NSMutableArray array];
         self.imageView = imageView;
         self.levelIndex = 0;
-        self.levels = [NSMutableArray array];
+        self.levels = [NSMutableArray arrayWithArray:[GameEngine createLevels]];
         //max level is 16 x 30
-        [self createLevels];
         [self resetLevel];
     }
     return self;
@@ -55,7 +54,8 @@
     [self resetLevel];
 }
 
-- (void) createLevels {
++ (NSArray *) createLevels {
+    NSMutableArray * levels = [NSMutableArray array];
     //level 1 introduces player and end
     NSString * levelString = [NSString stringWithFormat:@""
         "WWWWWX"
@@ -69,7 +69,7 @@
         "W   WX"
         "WWWWWX"
     ];
-    [self.levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
     
     //level 2, introduces key and doors
     levelString = [NSString stringWithFormat:@""
@@ -87,7 +87,7 @@
         "W   WX"
         "WWWWWX"
     ];
-    [self.levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
     
     //level 3, introduces colored key and doors
     levelString = [NSString stringWithFormat:@""
@@ -104,8 +104,8 @@
        "W 1  2  3 WX"
        "W         WX"
        "WWWWWWWWWWWX"
-   ];
-    [self.levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    ];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
     
     
     //level 4, first real puzzle w/ colored keys and doors
@@ -126,7 +126,7 @@
         "     W   WX"
         "     WWWWWX"
     ];
-    [self.levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
     
     //level 5, introduces a monster
     levelString = [NSString stringWithFormat:@""
@@ -140,8 +140,10 @@
        "W P WX"
        "W   WX"
        "WWWWWX"
-   ];
-    [self.levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    ];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    
+    return levels;
             
 }
 

@@ -13,5 +13,6 @@
 - (instancetype)initWithImageView:(UIImageView *)imageView;
 - (void) movePlayerByOffsetx:(int)x yOffset:(int)y;
 - (void) playTestLevel:(GameLevel*)level;
++ (NSArray *) createLevels;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96018FD11F60EEC6005E0088 /* LevelSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96018FD01F60EEC6005E0088 /* LevelSelectionViewController.m */; };
 		96976B701F54F97C00C8F722 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 96976B6F1F54F97C00C8F722 /* GameObject.m */; };
 		96976B731F54FA9B00C8F722 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 96976B721F54FA9B00C8F722 /* GameBoard.m */; };
 		96ABB3281F5A0EDA0088F376 /* LevelEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABB3271F5A0EDA0088F376 /* LevelEditor.m */; };
@@ -36,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96018FCF1F60EEC6005E0088 /* LevelSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectionViewController.h; sourceTree = "<group>"; };
+		96018FD01F60EEC6005E0088 /* LevelSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSelectionViewController.m; sourceTree = "<group>"; };
 		96976B6E1F54F97C00C8F722 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		96976B6F1F54F97C00C8F722 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObject.m; sourceTree = "<group>"; };
 		96976B711F54FA9B00C8F722 /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 				96ABB3401F5A66D00088F376 /* ModeSelectionPopup.m */,
 				96ABB3421F5A66E30088F376 /* GameObjectSelectionPopup.h */,
 				96ABB3431F5A66E30088F376 /* GameObjectSelectionPopup.m */,
+				96018FCF1F60EEC6005E0088 /* LevelSelectionViewController.h */,
+				96018FD01F60EEC6005E0088 /* LevelSelectionViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				96ABB34A1F5A71900088F376 /* UIView+TOFrameUtils.m in Sources */,
 				96FCE1081F566048006C1B30 /* README.md in Sources */,
 				96ABB3411F5A66D00088F376 /* ModeSelectionPopup.m in Sources */,
+				96018FD11F60EEC6005E0088 /* LevelSelectionViewController.m in Sources */,
 				96FCE1011F5646FA006C1B30 /* GameConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
