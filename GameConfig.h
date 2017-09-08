@@ -9,9 +9,10 @@
 @interface GameConfig : NSObject
 
 //UIColor defaults of these are neon garbage, changing them..
-@property (strong) UIColor * redColor;
+@property (strong) UIColor * purpleColor;
 @property (strong) UIColor * greenColor;
 @property (strong) UIColor * blueColor;
+@property (strong) UIColor * redColor;
 @property (strong) UIColor * backgroundColor;
 
 @property (strong) UIColor * playerColor;
@@ -34,9 +35,12 @@
 @property (strong) GameObject * prototypeEnd;
 @property (strong) GameObject * prototypeMonster;
 
+@property (strong) NSMutableArray * userLevels;
+
 + (GameConfig *) sharedInstance;
 - (GameObject *) createObjectWithType:(GameObjectType)type;
 - (GameObject *) createObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant;
 - (GameObject *) createObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant positionX:(int)x positionY:(int)y;
+- (void) saveConfig;
 
 @end

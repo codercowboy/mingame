@@ -32,6 +32,21 @@
     return self;
 }
 
+- (instancetype)initWithLevel:(GameLevel*)level {
+    self = [super init];
+    if (self) {
+        level.width = 16;
+        level.height = 30;
+        self.level = level;
+        GameConfig * cfg = [GameConfig sharedInstance];
+        self.currentObject = [cfg createObjectWithType:GAMEOBJECTTYPE_WALL
+                                               variant:GAMEOBJECTVARIANT_UNDEFINED positionX:0 positionY:0];
+        self.board = [GameBoard createBoardForLevel:level];
+        self.temporaryObjects = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (void) placeObjectAtX:(int)x y:(int)y temporary:(bool)temporary {
     if (self.currentObject == nil) {
         [self removeObjectAtX:x y:y];

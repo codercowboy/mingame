@@ -8,6 +8,8 @@
 
 #import "GameConfig.h"
 #import "GameRenderer.h"
+#import "GameLevel.h"
+#import "LevelSerializer.h"
 
 @interface GameConfig()
 
@@ -26,25 +28,71 @@
     return sharedInstance;
 }
 
-- (instancetype) init
-{
+- (void) saveConfig {
+    NSLog(@"Saving user levels to file.");
+    NSArray * documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * saveFile = [[documentPath objectAtIndex:0] stringByAppendingPathComponent:@"UserLevels.txt"];
+    NSMutableString * serializedLevels = [NSMutableString string];
+    for (GameLevel * level in self.userLevels) {
+        [serializedLevels appendString:[LevelSerializer serializeLevel:level]];
+        [serializedLevels appendString:@"\n"];
+    }
+    NSLog(@"Serialized levels:\n%@", serializedLevels);
+    NSError * error;
+    BOOL succeed = [serializedLevels writeToFile:saveFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (!succeed){
+        NSLog(@"Error trying to save file: %@", [error localizedDescription]);
+    } else {
+        NSLog(@"Saved %ld levels to file.", [self.userLevels count]);
+    }
+}
+
+- (void) loadConfig {
+    NSLog(@"Loading user levels from file.");
+    NSArray * documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * saveFile = [[documentPath objectAtIndex:0] stringByAppendingPathComponent:@"UserLevels.txt"];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:saveFile];
+    if (!fileExists) {
+        NSLog(@"Nothing to load from file, there's nothing there.");
+        return;
+    }
+    NSError * error;
+    NSString * serializedLevels = [NSString stringWithContentsOfFile:saveFile encoding:NSUTF8StringEncoding error:&error];
+    if (serializedLevels == nil) {
+        NSLog(@"Error trying to read file: %@", [error localizedDescription]);
+        return;
+    }
+    
+    for (NSString * levelAsString in [serializedLevels componentsSeparatedByString:@"\n"]) {
+        NSString * trimmedString = [levelAsString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        if (levelAsString == nil || trimmedString == nil || [@"" isEqualToString:trimmedString]) {
+            continue;
+        }
+        GameLevel * level = [LevelSerializer deserializeLevelFromString:levelAsString cfg:self];
+        [self.userLevels addObject:level];
+    }
+    NSLog(@"Loaded %ld levels from file.", [self.userLevels count]);
+}
+
+- (instancetype) init {
     self = [super init];
     if (self) {
+        self.userLevels = [NSMutableArray array];
         self.objectsByType = [NSMutableDictionary dictionary];
         
-        self.redColor = UIColorFromHex(0xEF2929);
-        self.greenColor = UIColorFromHex(0x4F8112);
-        self.blueColor = UIColorFromHex(0x0000FF);
+        self.purpleColor = UIColorFromHex(0x996699);
+        self.greenColor = UIColorFromHex(0x339900);
+        self.blueColor = UIColorFromHex(0x0066CC);
+        self.redColor = UIColorFromHex(0xCC0033);
         
-        self.backgroundColor = UIColorFromHex(0xFAFAFA);
+        self.backgroundColor = UIColorFromHex(0x333333);
                 
-        self.playerColor = self.redColor;
-        self.endColor = self.greenColor;
-        self.keyColor = UIColorFromHex(0xEDD400);
-        self.doorColor = UIColorFromHex(0xC17D11);
-        self.doorColor = [UIColor brownColor];
+        self.playerColor = UIColorFromHex(0x339999);
+        self.keyColor = UIColorFromHex(0xFFFF00);
+        self.endColor = UIColorFromHex(0xEEC933);
+        self.doorColor = UIColorFromHex(0x996633);
         self.wallColor = [UIColor blackColor];
-        self.monsterColor = [UIColor orangeColor];
+        self.monsterColor = self.redColor;
         
         
         
@@ -98,7 +146,7 @@
                                                             variant:GAMEOBJECTVARIANT_3
                                                               color:self.doorColor];
         
-        
+        [self loadConfig];
         
     }
     return self;
@@ -107,13 +155,17 @@
 - (GameObject *) createProtoTypeObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant color:(UIColor*)color {
     UIColor * borderColor = nil;
     if (variant == GAMEOBJECTVARIANT_1) {
-        borderColor = self.redColor;
-    } else if (variant == GAMEOBJECTVARIANT_2) {
         borderColor = self.greenColor;
+    } else if (variant == GAMEOBJECTVARIANT_2) {
+        borderColor = self.purpleColor;
     } else if (variant == GAMEOBJECTVARIANT_3) {
         borderColor = self.blueColor;
     }
     int borderWidth = (borderColor == nil) ? 0 : 2;
+    if (type == GAMEOBJECTTYPE_DOOR) {
+        color = borderColor;
+        borderWidth = 0;
+    }
     if (borderColor != nil) {
         UIColor * tmpColor = color;
         color = borderColor;
@@ -141,7 +193,7 @@
     NSString * key = [NSString stringWithFormat:@"%d:%d", type, variant];
     GameObject * o = [self.objectsByType objectForKey:key];
     if (o == nil) {
-        NSLog(@"WARNING: Can't create game object with type %d and varient %d, have you already configured it?", type, variant);
+        NSLog(@"WARNING: Can't create game object with type %d and variant %d, have you already configured it?", type, variant);
         return nil;
     }
     o = [o clone];

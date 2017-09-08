@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GameObjectSelectionPopup.h"
 #import "ModeSelectionPopup.h"
+#import "GameLevel.h"
 
 @interface LevelEditorViewController : UIViewController <ItemSelectionPopupButtonDelegate>
 
 @property (strong) IBOutlet UIImageView * imageView;
+@property (strong) GameLevel * level;
 
 @end

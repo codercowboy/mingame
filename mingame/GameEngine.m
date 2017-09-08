@@ -55,6 +55,7 @@
 }
 
 + (NSArray *) createLevels {
+    GameConfig * cfg = [GameConfig sharedInstance];
     NSMutableArray * levels = [NSMutableArray array];
     //level 1 introduces player and end
     NSString * levelString = [NSString stringWithFormat:@""
@@ -69,7 +70,7 @@
         "W   WX"
         "WWWWWX"
     ];
-    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString cfg:cfg]];
     
     //level 2, introduces key and doors
     levelString = [NSString stringWithFormat:@""
@@ -77,17 +78,17 @@
         "W   WX"
         "W E WX"
         "W   WX"
-        "WW6WWX"
+        "WW4WWX"
         "W   WX"
         "W   WX"
         "W P WX"
         "W   WX"
         "W   WX"
-        "W 3 WX"
+        "W 1 WX"
         "W   WX"
         "WWWWWX"
     ];
-    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString cfg:cfg]];
     
     //level 3, introduces colored key and doors
     levelString = [NSString stringWithFormat:@""
@@ -105,7 +106,7 @@
        "W         WX"
        "WWWWWWWWWWWX"
     ];
-    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString cfg:cfg]];
     
     
     //level 4, first real puzzle w/ colored keys and doors
@@ -126,7 +127,7 @@
         "     W   WX"
         "     WWWWWX"
     ];
-    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString cfg:cfg]];
     
     //level 5, introduces a monster
     levelString = [NSString stringWithFormat:@""
@@ -136,12 +137,15 @@
        "W   WX"
        "W M WX"
        "W   WX"
+       "WW4WWX"
        "W   WX"
        "W P WX"
        "W   WX"
+       "W 1 WX"
+       "W   WX"
        "WWWWWX"
     ];
-    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString]];
+    [levels addObject:[LevelSerializer deserializeLevelFromString:levelString cfg:cfg]];
     
     return levels;
             

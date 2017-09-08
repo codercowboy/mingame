@@ -7,6 +7,7 @@
 //
 
 #import "LevelSelectionViewController.h"
+#import "LevelEditorViewController.h"
 #import "ViewController.h"
 #import "GameEngine.h"
 #import "GameRenderer.h"
@@ -60,6 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     self.editMode = false;
     self.levels = [NSMutableArray arrayWithArray:[GameEngine createLevels]];
+    self.levels = [GameConfig sharedInstance].userLevels;
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -69,7 +71,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UILongPressGestureRecognizer * longGesture = [[UILongPressGestureRecognizer alloc] init];
     [longGesture addTarget:self action:@selector(handleLongPressGesture:)];
-    [self.collectionView addGestureRecognizer:longGesture];
+    [self.collectionView addGestureRecognizer:longGesture];    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.levels = [GameConfig sharedInstance].userLevels;
+    [self.collectionView reloadData];
 }
 
 -(void)handleLongPressGesture:(UILongPressGestureRecognizer*)gesture {
@@ -110,6 +117,11 @@ static NSString * const reuseIdentifier = @"Cell";
     self.editMode = !self.editMode;
 }
 
+- (IBAction) addLevel {
+    LevelEditorViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"leveleditorvc"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark <UICollectionViewDelegate>
 
 // Uncomment this method to specify if the specified item should be selected
@@ -145,7 +157,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   //  NSLog(@"selected: %d", indexPath.item);
-    ViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gamevc"];
+    LevelEditorViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"leveleditorvc"];
+    //ViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gamevc"];
     vc.level = [self.levels objectAtIndex:indexPath.item];
     [self.navigationController pushViewController:vc animated:YES];
 }

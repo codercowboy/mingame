@@ -31,22 +31,23 @@
     CGContextFillRect(context, CGRectMake(0, 0, width, height));
     
     if (borderWidth > 0) {
+        
         CGContextSetFillColorWithColor(context, [color CGColor]);
         CGRect innerRect = CGRectMake(borderWidth, borderWidth, width - (borderWidth *2), height - (borderWidth * 2));
         CGContextFillEllipseInRect(context, innerRect);
-        CGContextSetStrokeColorWithColor(context, [[UIColor yellowColor] CGColor]);
+        CGContextSetStrokeColorWithColor(context, [UIColorFromHex(0xFFFF00) CGColor]);
         CGContextSetLineWidth(context, 4);
         CGContextStrokeEllipseInRect(context, innerRect);
         CGContextStrokePath(context);
+        
         /*
         CGContextMoveToPoint(context, width / 2, borderWidth);
         CGContextAddLineToPoint(context, width - borderWidth, height - borderWidth);
         CGContextAddLineToPoint(context, borderWidth, height - borderWidth);
         CGContextAddLineToPoint(context, width / 2, borderWidth);
-        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextSetFillColorWithColor(context, [color CGColor]);
         CGContextFillPath(context);
-        */
-        
+         */
     }
     
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();

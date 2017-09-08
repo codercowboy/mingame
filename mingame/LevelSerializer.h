@@ -10,6 +10,7 @@
 
 @interface LevelSerializer : NSObject
 
-+ (GameLevel *) deserializeLevelFromString:(NSString*)encodedLevel;
++ (GameLevel *) deserializeLevelFromString:(NSString*)encodedLevel cfg:(GameConfig *)cfg;
++ (NSString *) serializeLevel:(GameLevel *)level;
 
 @end

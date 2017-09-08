@@ -36,7 +36,11 @@
     
     self.eraseMode = false;
     
-    self.levelEditor = [[LevelEditor alloc] init];
+    if (self.level == nil) {
+        self.levelEditor = [[LevelEditor alloc] init];
+    } else {
+        self.levelEditor = [[LevelEditor alloc] initWithLevel:self.level];
+    }    
     
     self.objectPopup = [[GameObjectSelectionPopup alloc] init];
     self.objectPopup.buttonDelegate = self;
@@ -80,6 +84,18 @@
             ViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gamevc"];
             vc.level = self.levelEditor.level;
             [self.navigationController pushViewController:vc animated:YES];
+        } else if ([@"save" isEqualToString:(NSString *)data]) {
+            GameConfig * cfg = [GameConfig sharedInstance];
+            if (![cfg.userLevels containsObject:self.levelEditor.level]) {
+                [cfg.userLevels addObject:self.levelEditor.level];
+            }
+            [cfg saveConfig];
+            [self.navigationController popViewControllerAnimated:YES];
+        } else if ([@"trash" isEqualToString:(NSString *)data]) {
+            GameConfig * cfg = [GameConfig sharedInstance];
+            [cfg.userLevels removeObject:self.levelEditor.level];
+            [cfg saveConfig];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } else {
         [self.objectPopup setHidden:true];

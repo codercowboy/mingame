@@ -7,10 +7,11 @@
 //
 
 #import "LevelSerializer.h"
+#import "GameBoard.h"
 
 @implementation LevelSerializer
 
-+ (GameLevel *) deserializeLevelFromString:(NSString*)encodedLevel {
++ (GameLevel *) deserializeLevelFromString:(NSString*)encodedLevel cfg:(GameConfig *)cfg {
     GameLevel * level = [[GameLevel alloc] init];
     
     /*
@@ -33,7 +34,6 @@
         \n = end of row
      */
     
-    GameConfig * cfg = [GameConfig sharedInstance];
     int x = 0;
     int y = 0;
     for (int i = 0; i < [encodedLevel length]; i++) {
@@ -82,6 +82,66 @@
     }
     
     return level;
+}
+
++ (NSString *) serializeLevel:(GameLevel *)level {
+    NSMutableString * s = [[NSMutableString alloc] init];
+    GameObject * obj = nil;
+    GameBoard * board = [GameBoard createBoardForLevel:level];
+    for (int y = 0; y < level.height; y++) {
+        NSMutableString * line = [[NSMutableString alloc] init];
+        for (int x = 0; x < level.width; x++) {
+            obj = [board getObjectAtX:x y:y];
+            if (obj == nil || obj.identifier.type == GAMEOBJECTTYPE_UNDEFINED) {
+                [line appendString:@"S"];
+            } else if (obj.identifier.type == GAMEOBJECTTYPE_PLAYER) {
+                [line appendString:@"P"];
+            } else if (obj.identifier.type == GAMEOBJECTTYPE_WALL) {
+                [line appendString:@"W"];
+            } else if (obj.identifier.type == GAMEOBJECTTYPE_MONSTER) {
+                [line appendString:@"M"];
+            } else if (obj.identifier.type == GAMEOBJECTTYPE_END) {
+                [line appendString:@"E"];
+            } else if (obj.identifier.type == GAMEOBJECTTYPE_KEY) {
+                if (obj.identifier.variant == GAMEOBJECTVARIANT_1) {
+                    [line appendString:@"1"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_2) {
+                    [line appendString:@"2"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_3) {
+                    [line appendString:@"3"];
+                } else {
+                    [line appendString:@"K"];
+                }
+            } else if (obj.identifier.type == GAMEOBJECTTYPE_DOOR) {
+                if (obj.identifier.variant == GAMEOBJECTVARIANT_1) {
+                    [line appendString:@"1"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_2) {
+                    [line appendString:@"2"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_3) {
+                    [line appendString:@"3"];
+                } else {
+                    [line appendString:@"D"];
+                }
+            }
+        }
+        //strip spaces off end of line
+        int lastNonSpaceCharacter = -1;
+        for (int i = 0; i < [line length]; i++) {
+            if ([line characterAtIndex:i] != 'S') {
+                lastNonSpaceCharacter = i;
+            }
+        }
+        if (lastNonSpaceCharacter != -1 && lastNonSpaceCharacter < ([line length] -1)) {
+            line = [NSMutableString stringWithString:[line substringWithRange:NSMakeRange(0, lastNonSpaceCharacter + 1)]];
+        } else if (lastNonSpaceCharacter == -1) {
+            line = [NSMutableString stringWithString:@""];
+        }
+        
+        
+        [line appendString:@"X"];
+        [s appendString:line];
+    }
+    return s;
 }
 
 @end

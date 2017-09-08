@@ -64,10 +64,18 @@
 
 - (GameObject *) getObjectAtX:(int)x y:(int)y {
     NSMutableArray * col = [self getColForIndex:x];
+    if (col == nil || ([col count] <= y)) {
+        return nil;
+    }
     NSObject * obj = [col objectAtIndex:y];
     return (obj == [NSNull null]) ? nil : (GameObject *) obj;
 }
 
-- (NSMutableArray *) getColForIndex:(int)index { return [self.board objectAtIndex:index]; }
+- (NSMutableArray *) getColForIndex:(int)index {
+    if ([self.board count] <= index) {
+        return nil;
+    }
+    return [self.board objectAtIndex:index];
+}
 
 @end

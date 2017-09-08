@@ -51,7 +51,7 @@
         <!--Level Editor View Controller-->
         <scene sceneID="O8o-Fs-dyD">
             <objects>
-                <viewController id="4qv-1O-iM0" customClass="LevelEditorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leveleditorvc" id="4qv-1O-iM0" customClass="LevelEditorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QPm-Mw-GBd"/>
                         <viewControllerLayoutGuide type="bottom" id="2YI-E3-Tcg"/>
@@ -139,7 +139,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="toggleEditMode" destination="Dby-GY-vd6" eventType="touchUpInside" id="hXz-0o-l0c"/>
+                                    <action selector="addLevel" destination="Dby-GY-vd6" eventType="touchUpInside" id="NMe-4C-unb"/>
                                 </connections>
                             </button>
                         </subviews>
