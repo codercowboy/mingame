@@ -52,6 +52,18 @@
         [self removeObjectAtX:x y:y];
         return;
     }
+    
+    //remove pre-existing player objects
+    if (self.currentObject.identifier.type == GAMEOBJECTTYPE_PLAYER) {
+        for (GameObject * o in [self.level getObjects]) {
+            if (o.identifier.type == GAMEOBJECTTYPE_PLAYER) {
+                [self.temporaryObjects removeObject:o];
+                [self.level removeObject:o];
+                [self.board removeObject:o];
+            }
+        }
+    }
+    
     GameObject * obj = [self.currentObject clone];
     obj.position = CGPointMake(x,y);
     obj.originalPosition = obj.position;

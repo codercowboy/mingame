@@ -2,10 +2,7 @@
 
 # Bugs
 
- * editor: when user adds level, automatically place player and end in level 
- * editor: when user places player, remove other player objs
  * Need a way to restart level when user gets stuck
- * How does it look on a iphone plus?
  * crashes when user attempts to go off screen when level has player outside of screen
 
 # Features
@@ -31,8 +28,12 @@
  * reorganize project layout on disk
  * mention usage of font awesome in about section
 
+# Before Release
 
-# future ideas
+ * How does it look on a iphone plus?
+ * add url to download game in share text
+
+# Future Ideas
 
  * Improve rendering engine to be three-phase as described in the TODOs in GameEngine
  * level editor ability to zoom in and work at a more detailed level
@@ -42,3 +43,4 @@
  * document code :P
  * Create level submission email, add ability to submit levels
  * allow multiple players in level
+ * make it ipad compatible

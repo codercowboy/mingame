@@ -153,8 +153,6 @@ static NSString * const reuseIdentifier = @"Cell";
     return YES;
 }
 
-
-
 - (void) collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(nonnull NSIndexPath *)sourceIndexPath toIndexPath:(nonnull NSIndexPath *)destinationIndexPath {
 //    NSLog(@"moved from %d to %d", sourceIndexPath.item, destinationIndexPath.item);
 }

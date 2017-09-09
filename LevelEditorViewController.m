@@ -30,15 +30,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.columnCount = 12;
+    self.columnCount = 13;
     self.rowCount = 22;
     self.tileLength = 26;
     
     if (self.level == nil) {
-        self.levelEditor = [[LevelEditor alloc] init];
-    } else {
-        self.levelEditor = [[LevelEditor alloc] initWithLevel:self.level];
-    }    
+        self.level = [[GameLevel alloc] init];
+        self.level.width = self.columnCount;
+        self.level.height = self.rowCount;
+        GameConfig * cfg = [GameConfig sharedInstance];
+        GameObject * player = [cfg createObjectWithType:GAMEOBJECTTYPE_PLAYER];
+        player.position = CGPointMake(6, 12);
+        player.originalPosition = player.position;
+        [self.level addObject:player];
+        
+        GameObject * end = [cfg createObjectWithType:GAMEOBJECTTYPE_END];
+        end.position = CGPointMake(6, 7);
+        end.originalPosition = end.position;
+        [self.level addObject:end];
+    }
+    self.levelEditor = [[LevelEditor alloc] initWithLevel:self.level];
     
     self.objectPopup = [[GameObjectSelectionPopup alloc] init];
     self.objectPopup.buttonDelegate = self;
@@ -170,22 +181,25 @@
         return;
     }
     int startX = MIN(self.touchStartPosition.x, self.touchStopPosition.x);
-    int stopX = MAX(self.touchStartPosition.x, self.touchStopPosition.x);
     int startY = MIN(self.touchStartPosition.y, self.touchStopPosition.y);
+    int stopX = MAX(self.touchStartPosition.x, self.touchStopPosition.x);
     int stopY = MAX(self.touchStartPosition.y, self.touchStopPosition.y);
-    bool fill = self.levelEditor.currentObject == nil;
-    for (int x = startX; x <= stopX; x++) {
-        for (int y = startY; y <= stopY; y++) {
-            if (!fill) {
-                if (y != startY && y != stopY
-                    && x != startX && x != stopX) {
-                    continue;
+    if (self.levelEditor.currentObject.identifier.type == GAMEOBJECTTYPE_PLAYER) {
+        [self.levelEditor placeObjectAtX:stopX y:stopY temporary:false];
+    } else {
+        bool fill = self.levelEditor.currentObject == nil;
+        for (int x = startX; x <= stopX; x++) {
+            for (int y = startY; y <= stopY; y++) {
+                if (!fill) {
+                    if (y != startY && y != stopY
+                        && x != startX && x != stopX) {
+                        continue;
+                    }
                 }
+                [self.levelEditor placeObjectAtX:x y:y temporary:true];
             }
-            [self.levelEditor placeObjectAtX:x y:y temporary:true];
         }
     }
-    NSLog(@"Size: %ld", [[self.levelEditor.level getObjects] count]);
     [self draw];
 }
 
