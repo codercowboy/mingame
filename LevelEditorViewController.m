@@ -23,7 +23,6 @@
 @property int tileLength;
 @property (strong) GameObjectSelectionPopup * objectPopup;
 @property (strong) ModeSelectionPopup * modePopup;
-@property bool eraseMode;
 
 @end
 
@@ -34,8 +33,6 @@
     self.columnCount = 12;
     self.rowCount = 22;
     self.tileLength = 26;
-    
-    self.eraseMode = false;
     
     if (self.level == nil) {
         self.levelEditor = [[LevelEditor alloc] init];
@@ -73,14 +70,8 @@
 
 - (void)handleButtonClickData:(NSObject *)data selectionPopup:(ItemSelectionPopup *)selectionPopup {
     if (selectionPopup == self.modePopup) {
-        self.eraseMode = false;
         if ([@"object" isEqualToString:(NSString *) data]) {
             [self.objectPopup setHidden:false];
-        } else if ([@"erase" isEqualToString:(NSString *) data]) {
-            self.eraseMode = true;
-            self.levelEditor.currentObject = nil;
-            self.modePopup.currentObject = nil;
-            [self.modePopup updateButtonFromCurrentObject];
         } else if ([@"play" isEqualToString:(NSString *)data]) {
             ViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"gamevc"];
             vc.level = self.levelEditor.level;
@@ -93,10 +84,33 @@
             [cfg saveConfig];
             [self.navigationController popViewControllerAnimated:YES];
         } else if ([@"trash" isEqualToString:(NSString *)data]) {
-            GameConfig * cfg = [GameConfig sharedInstance];
-            [cfg.userLevels removeObject:self.levelEditor.level];
-            [cfg saveConfig];
-            [self.navigationController popViewControllerAnimated:YES];
+            UIAlertController * alert = [UIAlertController
+                                         alertControllerWithTitle:@""
+                                         message:@"Are you sure?"
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            
+            
+            UIAlertAction* yesButton = [UIAlertAction
+                                        actionWithTitle:@"Yes"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * action) {
+                                            GameConfig * cfg = [GameConfig sharedInstance];
+                                            [cfg.userLevels removeObject:self.levelEditor.level];
+                                            [cfg saveConfig];
+                                            [self.navigationController popViewControllerAnimated:YES];
+                                        }];
+            
+            UIAlertAction* noButton = [UIAlertAction
+                                       actionWithTitle:@"No"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:yesButton];
+            [alert addAction:noButton];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
         } else if ([@"share" isEqualToString:(NSString *)data]) {
             NSString * serializedLevel = [LevelSerializer serializeLevel:self.levelEditor.level];
             NSString * url = [NSString stringWithFormat:@"mingame://level=%@", serializedLevel];
@@ -110,11 +124,16 @@
             
             [self presentViewController:activityController animated:YES completion:nil];
         }
-    } else {
+    } else { // game menu popup
         [self.objectPopup setHidden:true];
-        self.modePopup.currentObject = (GameObject *) data;
+        GameObject * obj = (GameObject *) data;
+        if (obj != nil && obj.identifier.type == GAMEOBJECTTYPE_SPACE) {
+            obj = nil;
+        }
+        
+        self.modePopup.currentObject = obj;
+        self.levelEditor.currentObject = obj;
         [self.modePopup updateButtonFromCurrentObject];
-        self.levelEditor.currentObject = (GameObject *) data;
     }
 }
 
@@ -154,7 +173,7 @@
     int stopX = MAX(self.touchStartPosition.x, self.touchStopPosition.x);
     int startY = MIN(self.touchStartPosition.y, self.touchStopPosition.y);
     int stopY = MAX(self.touchStartPosition.y, self.touchStopPosition.y);
-    bool fill = self.eraseMode;
+    bool fill = self.levelEditor.currentObject == nil;
     for (int x = startX; x <= stopX; x++) {
         for (int y = startY; y <= stopY; y++) {
             if (!fill) {
@@ -163,7 +182,7 @@
                     continue;
                 }
             }
-            [self.levelEditor placeObjectAtX:x y:y temporary:!self.eraseMode];
+            [self.levelEditor placeObjectAtX:x y:y temporary:true];
         }
     }
     NSLog(@"Size: %ld", [[self.levelEditor.level getObjects] count]);

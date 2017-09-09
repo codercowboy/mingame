@@ -84,6 +84,9 @@
         self.greenColor = UIColorFromHex(0x339900);
         self.blueColor = UIColorFromHex(0x0066CC);
         self.redColor = UIColorFromHex(0xCC0033);
+        self.orangeColor = UIColorFromHex(0xFF9933);
+        self.pinkColor = UIColorFromHex(0xFF99FF);
+
         
         self.backgroundColor = UIColorFromHex(0x333333);
                 
@@ -94,58 +97,25 @@
         self.wallColor = [UIColor blackColor];
         self.monsterColor = self.redColor;
         
-        
-        
-        self.prototypePlayer = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_PLAYER
-                                                           variant:GAMEOBJECTVARIANT_UNDEFINED
-                                                             color:self.playerColor];
-        
-        self.prototypeWall = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_WALL
-                                                           variant:GAMEOBJECTVARIANT_UNDEFINED
-                                                             color:self.wallColor];
-        
-        self.prototypeEnd = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_END
-                                                        variant:GAMEOBJECTVARIANT_UNDEFINED
-                                                          color:self.endColor];
-        
-        self.prototypeMonster = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_MONSTER
-                                                            variant:GAMEOBJECTVARIANT_UNDEFINED
-                                                              color:self.monsterColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_SPACE variant:GAMEOBJECTVARIANT_UNDEFINED color:[UIColor whiteColor]];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_PLAYER variant:GAMEOBJECTVARIANT_UNDEFINED color:self.playerColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_WALL variant:GAMEOBJECTVARIANT_UNDEFINED color:self.wallColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_END variant:GAMEOBJECTVARIANT_UNDEFINED color:self.endColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_MONSTER variant:GAMEOBJECTVARIANT_UNDEFINED color:self.monsterColor];
         
         //keys
-        self.prototypeKey = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
-                                                           variant:GAMEOBJECTVARIANT_UNDEFINED
-                                                             color:self.keyColor];
-        
-        self.prototypeKeyRed = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
-                                                        variant:GAMEOBJECTVARIANT_1
-                                                          color:self.backgroundColor];
-        
-        self.prototypeKeyGreen = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
-                                                            variant:GAMEOBJECTVARIANT_2
-                                                              color:self.backgroundColor];
-        
-        self.prototypeKeyBlue = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY
-                                                            variant:GAMEOBJECTVARIANT_3
-                                                              color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_1 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_2 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_3 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_4 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_5 color:self.backgroundColor];
         
         //doors
-        self.prototypeDoor = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR
-                                                           variant:GAMEOBJECTVARIANT_UNDEFINED
-                                                             color:self.doorColor];
-        
-        self.prototypeDoorRed = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR
-                                                           variant:GAMEOBJECTVARIANT_1
-                                                             color:self.doorColor];
-        
-        self.prototypeDoorGreen = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR
-                                                             variant:GAMEOBJECTVARIANT_2
-                                                               color:self.doorColor];
-        
-        self.prototypeDoorBlue = [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR
-                                                            variant:GAMEOBJECTVARIANT_3
-                                                              color:self.doorColor];
-        
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_1 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_2 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_3 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_4 color:self.backgroundColor];
+        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_5 color:self.backgroundColor];
         [self loadConfig];
         
     }
@@ -160,6 +130,10 @@
         borderColor = self.purpleColor;
     } else if (variant == GAMEOBJECTVARIANT_3) {
         borderColor = self.blueColor;
+    } else if (variant == GAMEOBJECTVARIANT_4) {
+        borderColor = self.orangeColor;
+    } else if (variant == GAMEOBJECTVARIANT_5) {
+        borderColor = self.pinkColor;
     }
     int borderWidth = (borderColor == nil) ? 0 : 2;
     if (type == GAMEOBJECTTYPE_DOOR) {

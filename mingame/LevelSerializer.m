@@ -22,14 +22,16 @@
         ' ' = Space
         M = Monster
         E = End
-        K = Key
         1 = Red Key
         2 = Green Key
         3 = Blue Key
-        D = Door
-        4 = Red D = Door
-        5 = Green D = Door
-        6 = Blue D = Door
+        4 = Orange Key
+        5 = Purple Key
+        6 = Red Door
+        7 = Green Door
+        8 = Blue Door
+        9 = Orange Door
+        0 = Purple Door
         X = end of row
         \n = end of row
      */
@@ -51,7 +53,7 @@
             type = GAMEOBJECTTYPE_MONSTER;
         } else if (c == 'E') {
             type = GAMEOBJECTTYPE_END;
-        } else if (c == 'K' || c == '1' || c == '2' || c == '3') {
+        } else if (c == '1' || c == '2' || c == '3' || c == '4' || c == '5') {
             type = GAMEOBJECTTYPE_KEY;
             if (c == '1') {
                 variant = GAMEOBJECTVARIANT_1;
@@ -59,15 +61,23 @@
                 variant = GAMEOBJECTVARIANT_2;
             } else if (c == '3') {
                 variant = GAMEOBJECTVARIANT_3;
-            }
-        } else if (c == 'D' || c == '4' || c == '5' || c == '6') {
-            type = GAMEOBJECTTYPE_DOOR;
-            if (c == '4') {
-                variant = GAMEOBJECTVARIANT_1;
+            } else if (c == '4') {
+                variant = GAMEOBJECTVARIANT_4;
             } else if (c == '5') {
+                variant = GAMEOBJECTVARIANT_5;
+            }
+        } else if (c == '6' || c == '7' || c == '8' || c == '9' || c == '0') {
+            type = GAMEOBJECTTYPE_DOOR;
+            if (c == '6') {
+                variant = GAMEOBJECTVARIANT_1;
+            } else if (c == '7') {
                 variant = GAMEOBJECTVARIANT_2;
-            } else if (c == '6') {
+            } else if (c == '8') {
                 variant = GAMEOBJECTVARIANT_3;
+            } else if (c == '9') {
+                variant = GAMEOBJECTVARIANT_4;
+            } else if (c == '0') {
+                variant = GAMEOBJECTVARIANT_5;
             }
         } else if (c == 'X' || c == '\n') {
             type = GAMEOBJECTTYPE_UNDEFINED;
@@ -109,16 +119,24 @@
                     [line appendString:@"2"];
                 } else if (obj.identifier.variant == GAMEOBJECTVARIANT_3) {
                     [line appendString:@"3"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_4) {
+                    [line appendString:@"4"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_5) {
+                    [line appendString:@"5"];
                 } else {
                     [line appendString:@"K"];
                 }
             } else if (obj.identifier.type == GAMEOBJECTTYPE_DOOR) {
                 if (obj.identifier.variant == GAMEOBJECTVARIANT_1) {
-                    [line appendString:@"4"];
-                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_2) {
-                    [line appendString:@"5"];
-                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_3) {
                     [line appendString:@"6"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_2) {
+                    [line appendString:@"7"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_3) {
+                    [line appendString:@"8"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_4) {
+                    [line appendString:@"9"];
+                } else if (obj.identifier.variant == GAMEOBJECTVARIANT_5) {
+                    [line appendString:@"0"];
                 } else {
                     [line appendString:@"D"];
                 }

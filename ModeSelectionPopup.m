@@ -19,7 +19,6 @@
     self = [super init];
     if (self) {
         self.objectButton = [self addButtonWithData:@"object" sprite:nil];
-        [self addButtonWithData:@"erase" sprite:[UIImage imageNamed:@"erase.png"]];
         [self addButtonWithData:@"play" sprite:[UIImage imageNamed:@"play.png"]];
         [self addButtonWithData:@"save" sprite:[UIImage imageNamed:@"save.png"]];
         [self addButtonWithData:@"trash" sprite:[UIImage imageNamed:@"trash.png"]];

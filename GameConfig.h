@@ -13,6 +13,8 @@
 @property (strong) UIColor * greenColor;
 @property (strong) UIColor * blueColor;
 @property (strong) UIColor * redColor;
+@property (strong) UIColor * orangeColor;
+@property (strong) UIColor * pinkColor;
 @property (strong) UIColor * backgroundColor;
 
 @property (strong) UIColor * playerColor;
@@ -21,19 +23,6 @@
 @property (strong) UIColor * doorColor;
 @property (strong) UIColor * endColor;
 @property (strong) UIColor * monsterColor;
-
-@property (strong) GameObject * prototypePlayer;
-@property (strong) GameObject * prototypeWall;
-@property (strong) GameObject * prototypeKey;
-@property (strong) GameObject * prototypeKeyBlue;
-@property (strong) GameObject * prototypeKeyGreen;
-@property (strong) GameObject * prototypeKeyRed;
-@property (strong) GameObject * prototypeDoor;
-@property (strong) GameObject * prototypeDoorBlue;
-@property (strong) GameObject * prototypeDoorGreen;
-@property (strong) GameObject * prototypeDoorRed;
-@property (strong) GameObject * prototypeEnd;
-@property (strong) GameObject * prototypeMonster;
 
 @property (strong) NSMutableArray * userLevels;
 

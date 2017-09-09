@@ -60,7 +60,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void) viewDidLoad {
     [super viewDidLoad];
     self.editMode = false;
-    self.levels = [NSMutableArray arrayWithArray:[GameEngine createLevels]];
+    //self.levels = [NSMutableArray arrayWithArray:[GameEngine createLevels]];
     self.levels = [GameConfig sharedInstance].userLevels;
     
     // Uncomment the following line to preserve selection between presentations
