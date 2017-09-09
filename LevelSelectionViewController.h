@@ -14,4 +14,5 @@
 
 @interface LevelSelectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong) IBOutlet UICollectionView * collectionView;
+- (void) updateFromConfig;
 @end

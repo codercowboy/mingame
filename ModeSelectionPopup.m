@@ -23,6 +23,7 @@
         [self addButtonWithData:@"play" sprite:[UIImage imageNamed:@"play.png"]];
         [self addButtonWithData:@"save" sprite:[UIImage imageNamed:@"save.png"]];
         [self addButtonWithData:@"trash" sprite:[UIImage imageNamed:@"trash.png"]];
+        [self addButtonWithData:@"share" sprite:[UIImage imageNamed:@"erase.png"]];
         [self resizeToFitButtons];
     }
     return self;

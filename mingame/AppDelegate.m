@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "GameLevel.h"
+#import "LevelSerializer.h"
+#import "LevelSelectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,36 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    return YES;
+}
+
+- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if (!url) {
+        return NO;
+    }
+    NSString * urlString = [url absoluteString];
+    NSLog(@"App opened with url: %@", urlString);
+    NSString * prefix = @"mingame://level=";
+    if (![urlString hasPrefix:prefix]) {
+        NSLog(@"Rejecting malformed url: %@", urlString);
+        return NO;
+    }
+    
+    NSString * serializedLevel = [urlString substringFromIndex:[prefix length]];
+    NSLog(@"Extracted level: %@", serializedLevel);
+    GameConfig * cfg = [GameConfig sharedInstance];
+    GameLevel * level = [LevelSerializer deserializeLevelFromString:serializedLevel cfg:cfg];
+    if (level == nil) {
+        NSLog(@"Error: couldn't load level!");
+        return NO;
+    } else {
+        [cfg.userLevels insertObject:level atIndex:0];
+        [cfg saveConfig];
+        UINavigationController * vc = (UINavigationController *) self.window.rootViewController;
+        LevelSelectionViewController * lvc = (LevelSelectionViewController *) [vc topViewController];
+        [lvc updateFromConfig];
+    }
+    
     return YES;
 }
 

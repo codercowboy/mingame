@@ -114,11 +114,11 @@
                 }
             } else if (obj.identifier.type == GAMEOBJECTTYPE_DOOR) {
                 if (obj.identifier.variant == GAMEOBJECTVARIANT_1) {
-                    [line appendString:@"1"];
+                    [line appendString:@"4"];
                 } else if (obj.identifier.variant == GAMEOBJECTVARIANT_2) {
-                    [line appendString:@"2"];
+                    [line appendString:@"5"];
                 } else if (obj.identifier.variant == GAMEOBJECTVARIANT_3) {
-                    [line appendString:@"3"];
+                    [line appendString:@"6"];
                 } else {
                     [line appendString:@"D"];
                 }

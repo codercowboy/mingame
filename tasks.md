@@ -2,6 +2,8 @@
 
 # Bugs
 
+ * editor: when user adds level, automatically place player and end in level 
+ * editor: when user places player, remove other player objs
  * Need a way to restart level when user gets stuck
  * How does it look on a iphone plus?
  * crashes when user attempts to go off screen when level has player outside of screen
@@ -15,12 +17,7 @@
  * change monster level up to have a key in it so it's clear the level is being reset
  * level selection screen tab bar at top with three level sets: world (preconfigured) levels, my levels, friends levels - friends level unlocks when one is shared to you
  * add monster pathing (and thus game clock)
- * Add ability to share levels via copy/paste of link
- * Add ability to share levels via email
  * when new level is added, prompt user with chance to play it, or error if it is corrupt
- * Create level submission email mingame@codercowboy.com, add ability to submit levels
- * mention usage of font awesome in about section
- * allow multiple players in level
 
 # Cleanup / Polish
 
@@ -32,11 +29,16 @@
  * add indicator on screen showing keys user has
  * move rendering out to GameRenderer
  * reorganize project layout on disk
+ * mention usage of font awesome in about section
+
 
 # future ideas
+
  * Improve rendering engine to be three-phase as described in the TODOs in GameEngine
  * level editor ability to zoom in and work at a more detailed level
  * level editor undo/redo
  * Make level editor IAP
  * allow user to copy and edit main game levels
  * document code :P
+ * Create level submission email, add ability to submit levels
+ * allow multiple players in level

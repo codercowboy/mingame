@@ -10,6 +10,7 @@
 #import "LevelEditor.h"
 #import "GameRenderer.h"
 #import "ViewController.h"
+#import "LevelSerializer.h"
 
 @interface LevelEditorViewController ()
 
@@ -96,6 +97,18 @@
             [cfg.userLevels removeObject:self.levelEditor.level];
             [cfg saveConfig];
             [self.navigationController popViewControllerAnimated:YES];
+        } else if ([@"share" isEqualToString:(NSString *)data]) {
+            NSString * serializedLevel = [LevelSerializer serializeLevel:self.levelEditor.level];
+            NSString * url = [NSString stringWithFormat:@"mingame://level=%@", serializedLevel];
+            NSArray * activityItems = @[[NSString stringWithFormat:@"Check out this level I made in mingame.\n\n%@", url]/*, [NSURL URLWithString:url]*/];
+            NSArray * applicationActivities = nil;
+            NSArray * excludeActivities = @[UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr, UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
+            
+            UIActivityViewController * activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
+            activityController.excludedActivityTypes = excludeActivities;
+            [activityController setValue:@"I made a mingame level!" forKey:@"subject"];
+            
+            [self presentViewController:activityController animated:YES completion:nil];
         }
     } else {
         [self.objectPopup setHidden:true];
