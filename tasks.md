@@ -29,11 +29,21 @@
  * move rendering out to GameRenderer
  * reorganize project layout on disk
  * mention usage of font awesome in about section
+ * add license to source files 
+ * add font awesome rendering into project
+ * change app-wide font to typewriter 
+ * add shark or my music
+ * add splash screen
 
 # Before Release
 
  * How does it look on a iphone plus?
  * add url to download game in share text
+ * update codercowboy to have
+   * animated gif of first level
+   * link to book
+   * logo with white wikibuy font, dot over 'i' is blue door key
+   * links to linkedin, github
 
 # Future Ideas
 
@@ -46,3 +56,4 @@
  * Create level submission email, add ability to submit levels
  * allow multiple players in level
  * make it ipad compatible
+ * consider coins collected in game to unlock worlds or editor assets
