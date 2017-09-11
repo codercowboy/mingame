@@ -86,73 +86,126 @@
         self.redColor = UIColorFromHex(0xCC0033);
         self.orangeColor = UIColorFromHex(0xFF9933);
         self.pinkColor = UIColorFromHex(0xFF99FF);
-
+        self.greyColor = UIColorFromHex(0x555454);
+        self.yellowColor = UIColorFromHex(0xEEC933);
+        //self.yellowColor = UIColorFromHex(0xFFFF00);
+        self.tealColor = UIColorFromHex(0x339999);
         
         self.backgroundColor = UIColorFromHex(0x333333);
                 
-        self.playerColor = UIColorFromHex(0x339999);
-        self.keyColor = UIColorFromHex(0xFFFF00);
-        self.endColor = UIColorFromHex(0xEEC933);
-        self.doorColor = UIColorFromHex(0x996633);
+        self.playerColor = self.blueColor;
+        self.endColor = self.greenColor;
         self.wallColor = [UIColor blackColor];
         self.monsterColor = self.redColor;
         
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_SPACE variant:GAMEOBJECTVARIANT_UNDEFINED color:[UIColor whiteColor]];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_PLAYER variant:GAMEOBJECTVARIANT_UNDEFINED color:self.playerColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_WALL variant:GAMEOBJECTVARIANT_UNDEFINED color:self.wallColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_END variant:GAMEOBJECTVARIANT_UNDEFINED color:self.endColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_MONSTER variant:GAMEOBJECTVARIANT_UNDEFINED color:self.monsterColor];
+        GameRenderer * r = [[GameRenderer alloc] init];
+        r.scaleMultiplier = 8;
+        
+        int sideLength = 40;
+        
+        r.color = [UIColor whiteColor];
+        
+        UIImage * sprite = [r drawSquareWithSideLength:sideLength];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_SPACE variant:GAMEOBJECTVARIANT_UNDEFINED sprite:sprite];
+        
+        r.borderWidth = 1;
+        r.borderColor = self.greyColor;
+        r.color = self.wallColor;
+        sprite = [r drawSquareWithSideLength:sideLength];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_WALL variant:GAMEOBJECTVARIANT_UNDEFINED sprite:sprite];
+        UIImage * wallImage = sprite;
+        
+        r.borderWidth = 0;
+        
+        UIImage * blankImage = [r createEmptyImageWithSideLength:sideLength];
+        
+        r.color = self.playerColor;
+        sprite = [r drawCircleWithSideLength:((sideLength / 3) * 2)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_PLAYER variant:GAMEOBJECTVARIANT_UNDEFINED sprite:sprite];
+        
+        r.color = self.endColor;
+        sprite = [r drawCircleWithSideLength:((sideLength / 3) * 2)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_END variant:GAMEOBJECTVARIANT_UNDEFINED sprite:sprite];
+        
+        r.borderColor = self.greyColor;
+        r.borderColor = [UIColor whiteColor];
+        r.borderWidth = 1;
+        
+        r.borderColor = self.greyColor;
+        r.color = self.monsterColor;
+        r.borderWidth = 1;
+        sprite = [r drawOctagonWithSideLength:((sideLength / 5) * 3)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_MONSTER variant:GAMEOBJECTVARIANT_UNDEFINED sprite:sprite];
+        
+        r.borderColor = [UIColor whiteColor];
+        r.borderWidth = 1;
         
         //keys
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_1 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_2 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_3 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_4 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_5 color:self.backgroundColor];
+        r.color = self.tealColor;
+        sprite = [r drawCircleWithSideLength:(sideLength / 3)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_1 sprite:sprite];
         
+        r.color = self.purpleColor;
+        sprite = [r drawCircleWithSideLength:(sideLength / 3)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_2 sprite:sprite];
+        
+        r.color = self.yellowColor;
+        sprite = [r drawCircleWithSideLength:(sideLength / 3)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_3 sprite:sprite];
+        
+        r.color = self.orangeColor;
+        sprite = [r drawCircleWithSideLength:(sideLength / 3)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_4 sprite:sprite];
+        
+        r.color = self.pinkColor;
+        sprite = [r drawCircleWithSideLength:(sideLength / 3)];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:blankImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_KEY variant:GAMEOBJECTVARIANT_5 sprite:sprite];
+
         //doors
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_1 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_2 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_3 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_4 color:self.backgroundColor];
-        [self createProtoTypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_5 color:self.backgroundColor];
-        [self loadConfig];
+        r.color = self.tealColor;
+        int doorEmblemSideLength = (sideLength / 3) * 2;
+        sprite = [r drawSquareWithSideLength:doorEmblemSideLength];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:wallImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_1 sprite:sprite];
         
+        r.color = self.purpleColor;
+        sprite = [r drawSquareWithSideLength:doorEmblemSideLength];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:wallImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_2 sprite:sprite];
+        
+        r.color = self.yellowColor;
+        sprite = [r drawSquareWithSideLength:doorEmblemSideLength];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:wallImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_3 sprite:sprite];
+        
+        r.color = self.orangeColor;
+        sprite = [r drawSquareWithSideLength:doorEmblemSideLength];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:wallImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_4 sprite:sprite];
+        
+        r.color = self.pinkColor;
+        sprite = [r drawSquareWithSideLength:doorEmblemSideLength];
+        sprite = [r addImageAsCenteredLayer:sprite onImage:wallImage];
+        [self createPrototypeObjectWithType:GAMEOBJECTTYPE_DOOR variant:GAMEOBJECTVARIANT_5 sprite:sprite];
     }
     return self;
 }
 
-- (GameObject *) createProtoTypeObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant color:(UIColor*)color {
-    UIColor * borderColor = nil;
-    if (variant == GAMEOBJECTVARIANT_1) {
-        borderColor = self.greenColor;
-    } else if (variant == GAMEOBJECTVARIANT_2) {
-        borderColor = self.purpleColor;
-    } else if (variant == GAMEOBJECTVARIANT_3) {
-        borderColor = self.blueColor;
-    } else if (variant == GAMEOBJECTVARIANT_4) {
-        borderColor = self.orangeColor;
-    } else if (variant == GAMEOBJECTVARIANT_5) {
-        borderColor = self.pinkColor;
-    }
-    int borderWidth = (borderColor == nil) ? 0 : 2;
-    if (type == GAMEOBJECTTYPE_DOOR) {
-        color = borderColor;
-        borderWidth = 0;
-    }
-    if (borderColor != nil) {
-        UIColor * tmpColor = color;
-        color = borderColor;
-        borderColor = tmpColor;
-    }
-    UIImage * sprite = [GameRenderer createSpriteWithColor:color borderColor:borderColor
-                                               borderWidth:borderWidth height:10 width:10];
+- (GameObject *) createPrototypeObjectWithType:(GameObjectType)type variant:(GameObjectVariant)variant sprite:(UIImage *)sprite {
     GameObject * o = [GameObject createWithType:type position:CGPointMake(0, 0) sprite:sprite];
     o.identifier.variant = variant;
     NSString * key = [NSString stringWithFormat:@"%d:%d", type, variant];
     [self.objectsByType setObject:o forKey:key];
+    [o addSprite:sprite];
     return o;
-    
 }
 
 - (GameObject *) createObjectWithType:(GameObjectType)type {
@@ -167,8 +220,10 @@
     NSString * key = [NSString stringWithFormat:@"%d:%d", type, variant];
     GameObject * o = [self.objectsByType objectForKey:key];
     if (o == nil) {
-        NSLog(@"WARNING: Can't create game object with type %d and variant %d, have you already configured it?", type, variant);
-        return nil;
+        NSString * msg = @"Can't create game object with type %d and variant %d, have you already configured it?";
+        NSString * error = [NSString stringWithFormat:msg, type, variant];
+        NSException * e = [NSException exceptionWithName:@"GameObjectPrototypeMissing" reason:error userInfo:nil];
+        @throw e;
     }
     o = [o clone];
     o.position = CGPointMake(x, y);

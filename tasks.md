@@ -4,6 +4,7 @@
 
  * Need a way to restart level when user gets stuck
  * crashes when user attempts to go off screen when level has player outside of screen
+ * level editor shouldnt erase blocks in the middle of new box of blocks while dragging on screen
 
 # Features
 
@@ -11,6 +12,7 @@
  * don't show user menu screen until they have completed tutorial
  * every launch after tutorial completed goes to level 1, then after completing level 1 goes to main screen
  * main screen: circular buttons with icons in them: play from start, level selection, credits
+ * change user movement to be one smooth touches tracking rather than swipes
  * change monster level up to have a key in it so it's clear the level is being reset
  * level selection screen tab bar at top with three level sets: world (preconfigured) levels, my levels, friends levels - friends level unlocks when one is shared to you
  * add monster pathing (and thus game clock)

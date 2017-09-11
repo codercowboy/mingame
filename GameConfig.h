@@ -16,11 +16,12 @@
 @property (strong) UIColor * orangeColor;
 @property (strong) UIColor * pinkColor;
 @property (strong) UIColor * backgroundColor;
+@property (strong) UIColor * greyColor;
+@property (strong) UIColor * yellowColor;
+@property (strong) UIColor * tealColor;
 
 @property (strong) UIColor * playerColor;
 @property (strong) UIColor * wallColor;
-@property (strong) UIColor * keyColor;
-@property (strong) UIColor * doorColor;
 @property (strong) UIColor * endColor;
 @property (strong) UIColor * monsterColor;
 

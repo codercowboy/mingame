@@ -10,6 +10,256 @@
 
 @implementation GameRenderer
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.scaleMultiplier = 1;
+        self.borderWidth = 0;
+    }
+    return self;
+}
+
+- (UIImage *) createEmptyImageWithSideLength:(int)sideLength {
+    int scaledSideLength = sideLength * self.scaleMultiplier;
+    UIGraphicsBeginImageContext(CGSizeMake(scaledSideLength, scaledSideLength));
+    UIImage * scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
+- (UIImage *) drawSquareWithSideLength:(int)sideLength {
+    int scaledSideLength = sideLength * self.scaleMultiplier;
+    int scaledBorderSize = self.borderWidth * self.scaleMultiplier;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(scaledSideLength, scaledSideLength));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    if (self.borderColor != nil && self.borderWidth > 0) {
+        CGContextSetFillColorWithColor(context, [self.borderColor CGColor]);
+        CGContextFillRect(context, CGRectMake(0, 0, scaledSideLength, scaledSideLength));
+        CGContextSetFillColorWithColor(context, [self.color CGColor]);
+        CGContextFillRect(context, CGRectMake(scaledBorderSize, scaledBorderSize,
+                                              scaledSideLength - (scaledBorderSize * 2),
+                                              scaledSideLength - (scaledBorderSize * 2)));
+    } else {
+        CGContextSetFillColorWithColor(context, [self.color CGColor]);
+        CGContextFillRect(context, CGRectMake(0, 0, scaledSideLength, scaledSideLength));
+    }
+    UIImage * scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
+- (UIImage *) drawCircleWithSideLength:(int)sideLength {
+    int scaledSideLength = sideLength * self.scaleMultiplier;
+    int scaledBorderSize = self.borderWidth * self.scaleMultiplier;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(scaledSideLength, scaledSideLength));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect innerRect = CGRectMake(scaledBorderSize, scaledBorderSize,
+                                  scaledSideLength - (scaledBorderSize * 2),
+                                  scaledSideLength - (scaledBorderSize * 2));
+    CGContextSetFillColorWithColor(context, [self.color CGColor]);
+    CGContextFillEllipseInRect(context, innerRect);
+    if (self.borderColor != nil && self.borderWidth > 0) {
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokeEllipseInRect(context, innerRect);
+        CGContextStrokePath(context);
+    }
+    
+    UIImage * scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
+- (UIImage *) drawTriangleWithSideLength:(int)sideLength {
+    int scaledSideLength = sideLength * self.scaleMultiplier;
+    int scaledBorderSize = self.borderWidth * self.scaleMultiplier;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(scaledSideLength, scaledSideLength));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //start top middle
+    long middle = scaledSideLength / 2;
+    CGContextMoveToPoint(context, middle, scaledBorderSize);
+    //line to bottom right corner
+    CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledSideLength - scaledBorderSize);
+    //line to bottom left corner
+    CGContextAddLineToPoint(context, scaledBorderSize, scaledSideLength - scaledBorderSize);
+    //line back to top middle
+    CGContextAddLineToPoint(context, middle, scaledBorderSize);
+
+    CGContextSetFillColorWithColor(context, [self.color CGColor]);
+    CGContextFillPath(context);
+
+    if (self.borderColor != nil && self.borderWidth > 0) {
+        //start top middle
+        long middle = scaledSideLength / 2;
+        CGContextMoveToPoint(context, middle, scaledBorderSize);
+        //line to bottom right corner
+        CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledSideLength - scaledBorderSize);
+        //line to bottom left corner
+        CGContextAddLineToPoint(context, scaledBorderSize, scaledSideLength - scaledBorderSize);
+        //line back to top middle
+        CGContextAddLineToPoint(context, middle, scaledBorderSize);
+        //and another line to bottom right corner to make the top corner look nice
+        CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledSideLength - scaledBorderSize);
+        
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokePath(context);
+    }
+    
+    UIImage * scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
+- (UIImage *) drawOctagonWithSideLength:(int)sideLength {
+    int scaledSideLength = sideLength * self.scaleMultiplier;
+    int scaledBorderSize = self.borderWidth * self.scaleMultiplier;
+    int scaledThirdSideLength = scaledSideLength / 3;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(scaledSideLength, scaledSideLength));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    /*
+      AB
+     H  C
+     G  D
+      FE
+     */
+    
+    //start at A
+    CGContextMoveToPoint(context, scaledThirdSideLength, scaledBorderSize);
+    //line to B
+    CGContextAddLineToPoint(context, scaledThirdSideLength * 2, scaledBorderSize);
+    //line to C
+    CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledThirdSideLength);
+    //line to D
+    CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledThirdSideLength * 2);
+    //line to E
+    CGContextAddLineToPoint(context, scaledThirdSideLength * 2, scaledSideLength - scaledBorderSize);
+    //line to F
+    CGContextAddLineToPoint(context, scaledThirdSideLength, scaledSideLength - scaledBorderSize);
+    //line to G
+    CGContextAddLineToPoint(context, scaledBorderSize, scaledThirdSideLength * 2);
+    //line to H
+    CGContextAddLineToPoint(context, scaledBorderSize, scaledThirdSideLength);
+    //line to A
+    CGContextAddLineToPoint(context, scaledThirdSideLength, scaledBorderSize);
+    //and another line to be to make corner around A look nice
+    CGContextAddLineToPoint(context, scaledThirdSideLength * 2, scaledBorderSize);
+    
+    CGContextSetFillColorWithColor(context, [self.color CGColor]);
+    CGContextFillPath(context);
+    
+    if (self.borderColor != nil && self.borderWidth > 0) {
+        //start at A
+        CGContextMoveToPoint(context, scaledThirdSideLength, scaledBorderSize);
+        //line to B
+        CGContextAddLineToPoint(context, scaledThirdSideLength * 2, scaledBorderSize);
+        //line to C
+        CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledThirdSideLength);
+        //line to D
+        CGContextAddLineToPoint(context, scaledSideLength - scaledBorderSize, scaledThirdSideLength * 2);
+        //line to E
+        CGContextAddLineToPoint(context, scaledThirdSideLength * 2, scaledSideLength - scaledBorderSize);
+        //line to F
+        CGContextAddLineToPoint(context, scaledThirdSideLength, scaledSideLength - scaledBorderSize);
+        //line to G
+        CGContextAddLineToPoint(context, scaledBorderSize, scaledThirdSideLength * 2);
+        //line to H
+        CGContextAddLineToPoint(context, scaledBorderSize, scaledThirdSideLength);
+        //line to A
+        CGContextAddLineToPoint(context, scaledThirdSideLength, scaledBorderSize);
+        //and another line to be to make corner around A look nice
+        CGContextAddLineToPoint(context, scaledThirdSideLength * 2, scaledBorderSize);
+        
+        
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokePath(context);
+    }
+    
+    UIImage * scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
+- (UIImage *) addImageAsCenteredLayer:(UIImage *)newLayer onImage:(UIImage *)image {
+    int originalWidth = image.size.width;
+    int layerWidth = newLayer.size.width;
+    int buffer = (originalWidth - layerWidth) / 2;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(originalWidth, originalWidth));
+    [image drawInRect:CGRectMake(0, 0, originalWidth, originalWidth)];
+    [newLayer drawInRect:CGRectMake(buffer, buffer, layerWidth, layerWidth)];
+    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+- (UIImage *) scaleImageDown:(UIImage *)originalImage sideLength:(int)sideLength {
+    UIGraphicsBeginImageContext(CGSizeMake(sideLength, sideLength));
+    [originalImage drawInRect:CGRectMake(0, 0, sideLength, sideLength)];
+    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+- (UIImage *) drawBorderOnImage:(UIImage*)image top:(BOOL)top left:(BOOL)left right:(BOOL)right bottom:(BOOL)bottom {
+    int scaledWidth = image.size.width * self.scaleMultiplier;
+    int scaledBorderSize = self.borderWidth * self.scaleMultiplier;
+    int buffer = scaledBorderSize / 2;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(scaledWidth, scaledWidth));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    [image drawInRect:CGRectMake(0, 0, scaledWidth, scaledWidth)];
+    
+    if (top) {
+        CGContextMoveToPoint(context, 0, buffer);
+        CGContextAddLineToPoint(context, scaledWidth, buffer);
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokePath(context);
+    }
+    
+    if (left) {
+        CGContextMoveToPoint(context, buffer, 0);
+        CGContextAddLineToPoint(context, buffer, scaledWidth);
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokePath(context);
+    }
+    
+    if (right) {
+        CGContextMoveToPoint(context, scaledWidth - buffer, 0);
+        CGContextAddLineToPoint(context, scaledWidth - buffer, scaledWidth);
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokePath(context);
+    }
+    
+    if (bottom) {
+        CGContextMoveToPoint(context, 0, scaledWidth - buffer);
+        CGContextAddLineToPoint(context, scaledWidth, scaledWidth - buffer);
+        CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+        CGContextSetLineWidth(context, scaledBorderSize);
+        CGContextStrokePath(context);
+    }
+    
+
+    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 + (UIImage *) createSpriteWithColor:(UIColor *)color height:(int)height width:(int)width {
     return [GameRenderer createSpriteWithColor:color borderColor:nil borderWidth:0 height:height width:width];
 }
